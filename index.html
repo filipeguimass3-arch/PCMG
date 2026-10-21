@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Desafio PCMG - Jogo Didático da Lei Complementar</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap');
+body{background:#07080a repeating-linear-gradient(135deg,#0b0c0f 0 14px,#08090b 14px 28px)!important}
+h1,h2,.ph{font-family:Oswald,Impact,sans-serif;letter-spacing:.07em;text-transform:uppercase}
+header{position:sticky;background:#050505!important;border-bottom:3px solid #d4a017!important}
+header::after{content:'';position:absolute;left:0;right:0;bottom:-9px;height:5px;background:repeating-linear-gradient(45deg,#d4a017 0 10px,#000 10px 20px)}
+header h1{color:#f0b90b!important}
+main>div{background:rgba(10,10,12,.94)!important;border:1px solid #3a2f0b!important;border-top:4px solid #d4a017!important}
+.rounded-xl,.rounded-2xl{border-radius:5px!important}
+.bg-blue-600{background:#d4a017!important;color:#111!important}
+.hover\:bg-blue-500:hover{background:#f0b90b!important}
+.text-blue-400{color:#f0b90b!important}
+.hover\:border-blue-500\/50:hover,.hover\:border-blue-500\/60:hover{border-color:#f0b90b!important}
+#opts button,#phases button{border-left:4px solid #d4a017!important}
+#theory p{margin:.7rem 0;line-height:1.65}#theory b{color:#f0b90b}
+footer{background:#050505}
+body{font-family:'Inter',system-ui,sans-serif;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-blue-600">
+<header class="bg-slate-900 border-b border-slate-800 py-4 px-6 sticky top-0 z-50">
+ <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+  <div class="flex items-center gap-3"><div class="bg-blue-600 p-2.5 rounded-xl text-xl">🛡️</div>
+   <div><h1 class="text-xl font-bold">Polícia Civil MG · Desafio</h1><p class="text-xs text-slate-400">Jogo de fixação da Lei Orgânica (arts. 1º a 106)</p></div></div>
+  <div class="flex items-center gap-4 bg-slate-950 px-4 py-2 rounded-xl border border-slate-800 text-sm">
+   <div>Questão <b id="cq" class="text-blue-400">0</b>/<span id="tq">0</span></div><div class="h-4 w-px bg-slate-800"></div>
+   <div>Pontos <b id="score" class="text-emerald-400">0</b></div><div class="h-4 w-px bg-slate-800"></div>
+   <div>Combo <b id="combo" class="text-amber-400">0</b>🔥</div></div>
+ </div>
+</header>
+<main class="max-w-3xl w-full mx-auto p-4 sm:p-6 flex-grow flex flex-col justify-center">
+
+<div id="menu" class="bg-slate-900/80 border border-slate-800 p-6 sm:p-8 rounded-2xl text-center space-y-5">
+ <h2 class="text-3xl font-extrabold">Domine a Lei Orgânica da PCMG</h2>
+ <p class="text-slate-300 text-sm max-w-xl mx-auto">Escolha uma fase por tema ou encare a maratona. Há questões de múltipla escolha, verdadeiro ou falso e lacunas (prazos, números e percentuais). Acertos seguidos geram combo e pontos extras.</p>
+ <div id="phases" class="grid sm:grid-cols-2 gap-3 text-left"></div>
+</div>
+
+<div id="theory" class="hidden p-6 sm:p-8 space-y-4"><div class="text-xs font-semibold uppercase tracking-widest text-blue-400">📚 Teoria antes da missão</div><h2 id="th" class="text-2xl font-bold"></h2><div id="tb" class="text-sm text-slate-300 max-h-[55vh] overflow-y-auto pr-2"></div><div class="flex gap-3 flex-wrap"><button onclick="toMenu()" class="px-5 py-3 bg-slate-800 rounded-md font-semibold">← Fases</button><button id="tgo" class="px-6 py-3 bg-blue-600 rounded-md font-bold uppercase">Iniciar missão ▶</button></div></div>
+<div id="quiz" class="hidden bg-slate-900/90 border border-slate-800 p-6 sm:p-8 rounded-2xl space-y-5">
+ <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden"><div id="bar" class="bg-blue-600 h-full transition-all" style="width:0"></div></div>
+ <div class="flex justify-between text-xs font-semibold uppercase tracking-widest"><span id="tag" class="text-blue-400"></span><span id="type" class="text-amber-400"></span></div>
+ <h3 id="qt" class="text-lg sm:text-xl font-semibold leading-relaxed"></h3>
+ <div id="opts" class="space-y-3"></div>
+ <div id="fb" class="hidden p-4 rounded-xl border text-sm space-y-2">
+  <div id="fbt" class="font-bold"></div><p id="fbx" class="text-slate-300"></p>
+  <button onclick="nextQ()" class="mt-2 w-full py-2.5 bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700">Próxima →</button>
+ </div>
+</div>
+
+<div id="result" class="hidden bg-slate-900/90 border border-slate-800 p-6 sm:p-8 rounded-2xl text-center space-y-5">
+ <div class="text-5xl">🏆</div><h2 class="text-2xl font-bold">Fase concluída!</h2>
+ <p id="fmsg" class="text-slate-300 text-sm"></p>
+ <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 max-w-sm mx-auto">
+  <div class="text-slate-400 text-sm">Acertos</div><div class="text-4xl font-extrabold text-emerald-400"><span id="fh">0</span>/<span id="ft">0</span></div>
+  <div class="text-sm text-slate-400 mt-2">Pontos: <b id="fp" class="text-emerald-400"></b> · Maior combo: <b id="fc" class="text-amber-400"></b></div></div>
+ <div id="rev" class="hidden text-left bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm space-y-2"></div>
+ <div class="flex gap-3 justify-center flex-wrap">
+  <button id="retry" onclick="retryErr()" class="hidden px-6 py-3 bg-amber-600 hover:bg-amber-500 rounded-xl font-semibold">Refazer erros</button>
+  <button onclick="toMenu()" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold">Menu de fases</button></div>
+</div>
+</main>
+<footer class="text-center py-5 text-xs text-slate-500 border-t border-slate-900">Baseado na Lei Complementar da Polícia Civil de Minas Gerais (PCMG). Confira sempre o texto oficial atualizado.</footer>
+
+<script>
+const P=["Disposições gerais (arts. 1–13)","Competência (arts. 14–16)","Administração superior (arts. 17–34)","Superintendências (arts. 35–44)","Prerrogativas e direitos (arts. 45–51)","Remoção, trabalho e licenças (arts. 52–70)","Aposentadoria e pensão (arts. 71–75)","Carreiras e ingresso (arts. 76–91)","Promoção e ADE (arts. 92–106)"];
+/* [fase, tipo(m=múltipla, l=lacuna, v=V/F), enunciado, resposta certa (m/l) ou true/false (v), erradas separadas por | , explicação] */
+const D=[
+[0,"l","A PCMG é órgão ______, essencial à segurança pública e à realização da justiça.","autônomo","subordinado|auxiliar|militar","Art. 2º."],
+[0,"v","O uso proporcional da força é um dos pontos a observar na atuação da PCMG.",true,"","Art. 3º, IV."],
+[0,"m","A quem cabe a direção da polícia judiciária em todo o Estado, nos limites de suas circunscrições?","Aos Delegados de Polícia de carreira","Aos Investigadores de Polícia|Ao Ministério Público|Ao Corregedor-Geral apenas","Art. 11."],
+[0,"v","A PCMG não pode executar contabilidade própria.",false,"","Art. 5º, II: tem autonomia administrativa e financeira e executa contabilidade própria."],
+[0,"m","A investigação criminal se encerra com:","a apuração da infração ou o exaurimento das possibilidades investigativas","a prisão em flagrante do suspeito|o oferecimento da denúncia|o arquivamento automático em 30 dias","Art. 7º."],
+[0,"l","O modelo da carteira funcional, válida em todo o território nacional, será regulamentado em ______.","decreto","lei ordinária|portaria|resolução do Conselho","Art. 13."],
+[1,"v","A PCMG subordina-se diretamente ao Governador do Estado.",true,"","Art. 15."],
+[1,"v","As funções constitucionais da PCMG podem ser delegadas a entidades particulares.",false,"","Art. 16, parágrafo único: são indelegáveis e só podem ser exercidas por ocupantes das carreiras que a integram."],
+[1,"m","Qual atividade é privativa da PCMG (art. 14, parágrafo único)?","Polícia técnico-científica e identificação civil e criminal","Policiamento ostensivo|Fiscalização tributária|Defesa das fronteiras","Art. 14, parágrafo único."],
+[2,"l","O Chefe da PCMG é escolhido entre Delegados do nível final com no mínimo ______ anos de efetivo serviço policial.","vinte","dez|quinze|vinte e cinco","Art. 18, parágrafo único. (Titulares das demais chefias: quinze anos, art. 17, § 8º.)"],
+[2,"m","Quem substitui automaticamente o Chefe da PCMG em seus afastamentos eventuais?","O Chefe Adjunto","O Corregedor-Geral|O Superintendente de Investigação|O Chefe de Gabinete","Art. 20."],
+[2,"m","Qual NÃO é estrutura do Conselho Superior da PCMG?","Câmara de Operações Especiais","Órgão Especial|Câmara Disciplinar|Câmara de Planejamento e Orçamento","Art. 24."],
+[2,"v","O Órgão Especial é composto exclusivamente por Delegados-Gerais de Polícia.",true,"","Art. 29."],
+[2,"m","O Chefe da PCMG afastado por infração penal com pena de reclusão é substituído por:","Chefe Adjunto","Corregedor-Geral|Governador, por interino|Delegado Assistente","Art. 21, parágrafo único."],
+[2,"l","A Corregedoria pode propor o afastamento preliminar de servidor por no máximo ______ dias.","noventa","trinta|sessenta|cento e oitenta","Art. 33, X."],
+[2,"v","O procedimento correicional terá a participação de, no mínimo, um representante da respectiva carreira policial.",true,"","Art. 34, parágrafo único."],
+[3,"m","O ensino, o recrutamento e a seleção de pessoal são privativos de qual órgão?","Academia de Polícia Civil","Corregedoria-Geral|Superintendência de Planejamento|Gabinete da Chefia","Art. 36, § 4º."],
+[3,"l","O Delegado pode ser incumbido de diligências por até ______ dias pela Superintendência de Investigação (art. 38, II).","trinta","dez|quinze|noventa","Art. 38, II."],
+[3,"m","Quem cuida de inteligência, estatística, telecomunicações e informática?","Superintendência de Informações e Inteligência Policial","Superintendência de Planejamento, Gestão e Finanças|Academia de Polícia Civil|Corregedoria-Geral","Art. 39, IV."],
+[3,"m","A Superintendência de Polícia Técnico-Científica é dirigida:","alternadamente por Médico-Legista ou Perito Criminal do último nível","sempre por Delegado-Geral|por Investigador|por oficial da PM","Art. 41, § 1º (mínimo de quinze anos de exercício)."],
+[3,"m","Perito Criminal e Médico-Legista têm autonomia técnica, científica e funcional e vinculam-se operacionalmente a:","Delegado responsável pela investigação","Ministério Público|Chefe da PM|Prefeito","Art. 43."],
+[4,"l","O Delegado só pode ser preso por ordem judicial escrita, salvo flagrante de crime inafiançável; a comunicação ao Chefe da PCMG ocorre em até ______.","vinte e quatro horas","doze horas|quarenta e oito horas|cinco dias","Art. 46, II."],
+[4,"v","O cargo de Delegado de Polícia é privativo de bacharel em direito.",true,"","Art. 46, § 3º."],
+[4,"l","Condenado sem demissão, o policial afastado recebe apenas ______ da remuneração (art. 47, § 2º, I).","um terço","metade|dois terços|um quinto","Art. 47, § 2º, I."],
+[4,"m","O adicional de férias regulamentares corresponde a:","um terço da remuneração","metade da remuneração|uma remuneração inteira|um doze avos","Art. 49, X."],
+[4,"l","A indenização de vestimenta é de ______ do vencimento básico do nível I de Investigador, paga em abril.","40%","20%|30%|50%","Art. 50."],
+[4,"m","Reposições ao erário são descontadas em parcelas de, no máximo:","a décima parte dos vencimentos","um terço dos vencimentos|metade dos vencimentos|um quinto dos vencimentos","Art. 51, parágrafo único."],
+[5,"v","A remoção por conveniência da disciplina não depende de vaga no quadro de distribuição.",true,"","Art. 52, § 3º."],
+[5,"m","A remoção ex officio de Delegado no interesse do serviço depende de vaga e de aprovação por maioria simples de:","Órgão Especial do Conselho Superior","Câmara Disciplinar|Governador|Câmara de Planejamento","Art. 55."],
+[5,"l","Na prestação de plantão, o descanso imediato e subsequente é de no mínimo ______.","doze horas","oito horas|vinte e quatro horas|seis horas","Art. 58, § 2º, III."],
+[5,"l","A licença por doença em pessoa da família tem prazo máximo de ______ dias com vencimentos integrais.","noventa","trinta|sessenta|cento e vinte","Art. 65 (prorrogação sem remuneração por até 120 dias)."],
+[5,"l","A licença por acidente em serviço tem prazo máximo de ______.","dois anos","seis meses|um ano|três anos","Art. 66."],
+[5,"l","Por casamento ou falecimento de familiar, o afastamento é de ______ dias consecutivos.","oito","três|cinco|quinze","Art. 67."],
+[5,"m","O afastamento para tratar de interesses particulares tem prazo máximo de:","dois anos, sem vencimentos","um ano, com vencimentos|três anos, sem vencimentos|seis meses, com vencimentos","Art. 70, IV e § 4º."],
+[6,"l","A aposentadoria compulsória do policial civil ocorre aos ______ anos de idade.","setenta","sessenta e cinco|sessenta|setenta e cinco","Art. 71, § 1º."],
+[6,"m","Aposentadoria voluntária da mulher (art. 72, II, b):","25 anos de contribuição e de efetivo exercício nas carreiras policiais","30 anos de contribuição e 25 de exercício|20 anos de contribuição|35 anos de contribuição","Art. 72, II, b."],
+[6,"l","O provento proporcional é calculado à razão de quotas de ______ do vencimento básico por ano de serviço.","1/30","1/35|1/25|1/20","Art. 73, II."],
+[7,"m","Quantas são as carreiras policiais civis?","Cinco","Três|Quatro|Seis","Art. 76: Delegado, Escrivão, Investigador, Médico-Legista e Perito Criminal."],
+[7,"v","Há subordinação hierárquica entre Escrivão, Investigador, Médico-Legista e Perito Criminal.",false,"","Art. 81, § 6º: não há subordinação entre eles."],
+[7,"m","Prova oral e prova de digitação são exigidas, respectivamente, para:","Delegado e Escrivão","Investigador e Perito|Escrivão e Delegado|Perito e Médico-Legista","Art. 84, § 2º."],
+[7,"l","O concurso para Delegado tem participação da ______ nas provas de conhecimento.","Ordem dos Advogados do Brasil","Defensoria Pública","Ministério Público|Tribunal de Justiça","Art. 84, § 4º."],
+[7,"l","O estágio probatório dura ______ anos a partir da posse.","três","dois|quatro|cinco","Art. 87."],
+[7,"m","Quem pratica o ato declaratório de estabilidade?","O Chefe da PCMG","O Governador|O Corregedor-Geral|O Conselho Superior","Art. 91."],
+[8,"m","Interstícios mínimos de efetivo exercício: progressão (mesmo grau) e promoção (mesmo nível):","1 ano e 2 anos","2 anos e 1 ano|1 ano e 1 ano|3 anos e 2 anos","Art. 93, § 1º, II e art. 94, § 5º, II."],
+[8,"l","A promoção por antiguidade e merecimento ocorre nos meses de ______ e dezembro.","junho","março|setembro|janeiro","Art. 94, § 2º."],
+[8,"v","As promoções por invalidez, post mortem e por aposentadoria independem da existência de vagas.",true,"","Art. 94, § 4º."],
+[8,"l","A promoção especial exige ______ anos de efetivo exercício no mesmo nível (Escrivão e Investigador).","oito","cinco|dez|quinze","Art. 96, II."],
+[8,"m","Perde progressão e promoção quem, no período aquisitivo, sofre suspensão de:","trinta dias ou mais","dez dias ou mais|quinze dias ou mais|noventa dias ou mais","Art. 99, I."],
+[8,"m","Primeiro critério de desempate na promoção:","maior média nas avaliações de desempenho do período","maior idade|maior tempo no serviço público|maior tempo na carreira","Art. 101, I (maior idade é o último)."],
+[8,"l","É satisfatório o resultado de ADI/AED igual ou superior a ______.","70%","50%|60%|80%","Art. 104, § 1º."],
+[8,"m","Pelo art. 105, quantas avaliações satisfatórias dão ADE de 6%, e quantas dão 60%?","3 e 30","5 e 25|10 e 30|3 e 25","Art. 105, I e VII."],
+[8,"l","ADE somado a adicionais por tempo de serviço não pode exceder ______ do vencimento básico.","90%","70%|80%|100%","Art. 103, § 5º."],
+[8,"v","Pela LC nº 188/2026, o tempo de mandato eletivo conta para todos os efeitos, exceto promoção por merecimento.",true,"","Art. 94, § 10 (acrescentado em 2026)."]
+];
+const Q=D.map(([p,t,q,a,w,e])=>({p,t,q,a,w:w?w.split("|"):[],e}));
+const $=i=>document.getElementById(i);
+const TN={m:"Múltipla escolha",l:"Complete a lacuna",v:"Verdadeiro ou Falso"};
+let list=[],i=0,score=0,hits=0,combo=0,best=0,done=true,errs=[],cur=null;
+const sh=a=>a.map(x=>[Math.random(),x]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+function show(id){["menu","theory","quiz","result"].forEach(s=>$(s).classList.toggle("hidden",s!==id))}
+function toMenu(){show("menu");$("cq").textContent=0;$("tq").textContent=0;$("score").textContent=0;$("combo").textContent=0}
+function buildMenu(){
+ const c=$("phases");
+ const add=(t,s,f)=>{const b=document.createElement("button");b.className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-blue-500/60 transition text-left";b.innerHTML=`<div class="font-semibold text-sm">${t}</div><div class="text-xs text-slate-400 mt-1">${s}</div>`;b.onclick=f;c.appendChild(b)};
+ P.forEach((n,k)=>add(`Fase ${k+1}: ${n}`,"Teoria + "+Q.filter(q=>q.p===k).length+" questões",()=>openTheory(k)));
+ add("🔥 Maratona","Todas as fases misturadas ("+Q.length+" questões)",()=>start(Q));
+}
+function start(l){list=sh(l);i=0;score=0;hits=0;combo=0;best=0;errs=[];$("tq").textContent=list.length;$("score").textContent=0;$("combo").textContent=0;show("quiz");load()}
+function load(){
+ done=false;$("fb").classList.add("hidden");
+ cur=list[i];$("cq").textContent=i+1;$("bar").style.width=(i/list.length*100)+"%";
+ $("tag").textContent=P[cur.p];$("type").textContent=TN[cur.t];
+ $("qt").textContent=cur.t==="v"?"Verdadeiro ou falso: "+cur.q:cur.q;
+ const o=cur.t==="v"?["Verdadeiro","Falso"]:sh([cur.a,...cur.w]);
+ cur.o=o;cur.ci=cur.t==="v"?(cur.a?0:1):o.indexOf(cur.a);
+ $("opts").innerHTML="";
+ o.forEach((x,k)=>{const b=document.createElement("button");
+  b.className="w-full text-left p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-blue-500/50 transition text-sm sm:text-base font-medium flex gap-3 items-start";
+  const s=document.createElement("span");s.className="bg-slate-800 text-slate-400 rounded-lg w-6 h-6 text-xs font-bold shrink-0 inline-flex items-center justify-center";s.textContent=String.fromCharCode(65+k);
+  const t=document.createElement("span");t.textContent=x;b.append(s,t);b.onclick=()=>pick(k);$("opts").appendChild(b)});
+}
+function pick(k){
+ if(done)return;done=true;
+ const b=$("opts").children,ok=k===cur.ci,fb=$("fb");
+ const paint=(n,c)=>b[n].className="w-full text-left p-4 rounded-xl border text-sm sm:text-base font-medium flex gap-3 items-start "+c;
+ paint(cur.ci,"bg-emerald-950/50 border-emerald-500/60 text-emerald-200");
+ if(ok){hits++;combo++;best=Math.max(best,combo);const g=10+Math.min(combo-1,5)*2;score+=g;
+  $("fbt").textContent="✅ Correto! +"+g+" pontos"+(combo>1?" (combo x"+combo+")":"");$("fbt").className="font-bold text-emerald-400";fb.className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 text-sm space-y-2"}
+ else{paint(k,"bg-rose-950/50 border-rose-500/60 text-rose-200");combo=0;errs.push(cur);
+  $("fbt").textContent="❌ Incorreto. Resposta: "+cur.o[cur.ci];$("fbt").className="font-bold text-rose-400";fb.className="p-4 rounded-xl border border-rose-500/30 bg-rose-950/20 text-sm space-y-2"}
+ $("fbx").textContent="📖 "+cur.e;$("score").textContent=score;$("combo").textContent=combo;
+}
+function nextQ(){i++;i<list.length?load():finish()}
+function finish(){
+ show("result");$("bar").style.width="100%";
+ $("fh").textContent=hits;$("ft").textContent=list.length;$("fp").textContent=score;$("fc").textContent=best;
+ const pc=hits/list.length;
+ $("fmsg").textContent=pc===1?"Gabaritou! Domínio total desta fase.":pc>=.7?"Muito bom! Revise só os pontos errados abaixo.":"Continue treinando: refaça os erros e releia os artigos indicados.";
+ const r=$("rev");r.innerHTML="";
+ $("retry").classList.toggle("hidden",!errs.length);r.classList.toggle("hidden",!errs.length);
+ if(errs.length){const h=document.createElement("div");h.className="font-bold text-amber-400";h.textContent="Para revisar:";r.appendChild(h);
+  errs.forEach(e=>{const d=document.createElement("div");d.className="text-slate-300";d.textContent="• "+e.e+" — "+(e.t==="v"?(e.a?"Verdadeiro":"Falso"):e.a);r.appendChild(d)})}
+}
+function retryErr(){start(errs.slice())}
+const T=[
+"<p><b>Art. 1º</b> Organiza a PCMG, define sua competência e o regime jurídico das carreiras.</p><p><b>Art. 2º</b> Órgão autônomo, essencial à segurança pública, à justiça e à defesa das instituições democráticas. Funções: proteger pessoas e patrimônio; preservar a ordem pública e as instituições políticas e jurídicas; apurar infrações penais e atos infracionais; exercer a polícia judiciária.</p><p><b>Art. 3º</b> Princípios: legalidade, impessoalidade, moralidade, publicidade, eficiência, direitos humanos, participação comunitária, mediação de conflitos, uso proporcional da força, hierarquia e disciplina, transparência e controle interno e externo, integração com o Sistema de Defesa Social.</p><p><b>Art. 4º</b> Investigação: indisponibilidade do interesse público, obrigatoriedade, oficialidade, sigilo, imparcialidade, indelegabilidade, indivisibilidade, uniformidade de procedimentos.</p><p><b>Art. 5º</b> Autonomia administrativa e financeira: programação anual, contabilidade própria, compra de viaturas e equipamentos.</p><p><b>Arts. 6º a 10</b> Investigação criminal: caráter técnico-jurídico-científico; começa com o conhecimento do fato e termina com a apuração ou o exaurimento das possibilidades investigativas. Polícia judiciária: inquérito, TCO, flagrante e fiança, representações cautelares, presença em local de crime.</p><p><b>Arts. 11 a 13</b> Direção da polícia judiciária: Delegados de carreira, fiscalizados pelo Corregedor-Geral. Símbolos: hino, brasão, logomarca, bandeira e distintivo. Carteira funcional válida em todo o território nacional, modelo em decreto.</p>",
+"<p><b>Art. 14</b> Órgão permanente, dirigido por Delegado de carreira, regido pela hierarquia e disciplina. Incumbem-lhe, ressalvada a União, a polícia judiciária e a apuração das infrações penais e atos infracionais, exceto os militares. <b>Privativas:</b> polícia técnico-científica, identificação civil e criminal, registro e licenciamento de veículos e habilitação de condutor.</p><p><b>Art. 15</b> Subordina-se diretamente ao Governador e integra o Sistema de Defesa Social.</p><p><b>Art. 16</b> Compete: planejar e executar a polícia judiciária; preservar locais de crime, colher provas, intimar, ouvir, acarear e requisitar perícias; representar ao Judiciário por cautelares (preventiva, temporária, busca e apreensão, quebra de sigilo, interceptação); cumprir mandados de prisão e busca e as requisições do Judiciário e do MP; fazer correições; formalizar inquérito, TCO e apuração de ato infracional; controlar armas, munições e explosivos; manter registro de controle policial; ensino, extensão e pesquisa; identificação; recrutamento e formação; inteligência; estatística e análise criminal. O inciso XI (trânsito) foi revogado.</p><p><b>Parágrafo único</b> As funções constitucionais são <b>indelegáveis</b> e só exercidas por ocupantes das carreiras.</p>",
+"<p><b>Art. 17</b> Administração superior: Chefia, Chefia Adjunta, Conselho Superior e Corregedoria-Geral. Administração: Gabinete, Academia e as Superintendências de Investigação e Polícia Judiciária, de Informações e Inteligência, de Polícia Técnico-Científica e de Planejamento, Gestão e Finanças. Titulares: escolhidos pelo Chefe, nomeados pelo Governador, nível final, mínimo de <b>15 anos</b> de serviço.</p><p><b>Arts. 18 a 22</b> Chefe da PCMG: Delegado do nível final com <b>20 anos</b>, nomeado pelo Governador, com prerrogativas de Secretário de Estado. Substituição: Chefe Adjunto, depois Corregedor-Geral, Superintendente de Investigação, Chefe de Gabinete e demais, na ordem do art. 20. Afasta-se se cometer infração com pena de reclusão. Compete dirigir a PCMG, presidir o Conselho Superior, instaurar PAD, aplicar sanções e decidir remoções.</p><p><b>Art. 23</b> Chefe Adjunto (20 anos): substitui e auxilia o Chefe.</p><p><b>Arts. 24 a 31</b> Conselho Superior: Órgão Especial (só Delegados-Gerais), Câmara Disciplinar (presidida pelo Chefe Adjunto; julga recursos contra atos do Corregedor) e Câmara de Planejamento e Orçamento.</p><p><b>Arts. 32 a 34</b> Corregedoria-Geral: órgão orientador, fiscalizador e correicional. Afastamento preliminar de até <b>90 dias</b>; entre 90 e 180 dias, ato do Chefe com maioria simples do Conselho. Competência delegável; a correição conta com ao menos um representante da carreira.</p>",
+"<p><b>Art. 35</b> Gabinete da Chefia: assessoramento político e administrativo, relações institucionais, comunicação social e diálogo com sindicatos.</p><p><b>Art. 36</b> Academia de Polícia Civil: recrutamento, seleção, formação e aperfeiçoamento. Ensino, treinamento, recrutamento e seleção são <b>privativos</b> da Acadepol, que pode terceirizar sob sua supervisão. Mantém o Instituto de Criminologia.</p><p><b>Art. 37</b> Revogado (Detran-MG).</p><p><b>Art. 38</b> Superintendência de Investigação e Polícia Judiciária: uniformidade de procedimentos; diligências por até <b>30 dias</b>; decide conflitos de competência; remove Investigadores e Escrivães dentro do Departamento; responde pela Polinter e pela Casa de Custódia.</p><p><b>Arts. 39 e 40</b> Informações e Inteligência: inteligência e contrainteligência, estatística, telecomunicações, informática e bancos de dados.</p><p><b>Arts. 41 a 43</b> Polícia Técnico-Científica: perícia oficial (Médico-Legista e Perito Criminal). Dirigida <b>alternadamente</b> por Médico-Legista ou Perito do último nível, com 15 anos. Autonomia técnica, científica e funcional, com vínculo operacional ao Delegado. Orçamento adequado.</p><p><b>Art. 44</b> Planejamento, Gestão e Finanças: orçamento, contabilidade, pessoal, material, patrimônio, frota, convênios e leilões.</p>",
+"<p><b>Art. 45</b> Prerrogativas: funções da condição hierárquica; distintivo e identidade funcional válidos no país; <b>porte livre de arma</b>; livre acesso a locais sujeitos a intervenção policial; prioridade em transporte e comunicação em serviço urgente; busca pessoal e veicular; convocar testemunhas; aposentadoria especial; requisição de bens em iminente perigo público, com indenização; prisão especial; equipamentos na primeira designação; condições adequadas de trabalho.</p><p><b>Art. 46</b> Delegado: expede notificações e mandados; só é preso por ordem judicial escrita, salvo flagrante de crime inafiançável (comunicação ao Chefe em <b>24 horas</b>); requisita dados, documentos e perícias. Tem autonomia e independência; funções jurídicas e exclusivas de Estado; cargo privativo de bacharel em direito.</p><p><b>Art. 47</b> Preso provisoriamente: afastado sem prejuízo da remuneração. Condenado sem demissão recebe <b>1/3</b>, ou a remuneração integral se puder exercer a função.</p><p><b>Arts. 48 e 49</b> Direitos: treinamento, saúde, readaptação, atos decisórios motivados. Verbas: ajuda de custo (1 mês), diárias, 13º, adicional de férias (<b>1/3</b>), auxílio-funeral, auxílio-natalidade, indenização securitária (20 vezes a remuneração).</p><p><b>Arts. 50 e 51</b> Vestimenta: <b>40%</b> do vencimento do nível I de Investigador, paga em abril. Descontos só por lei, ordem judicial ou autorização; reposições até <b>1/10</b>.</p>",
+"<p><b>Art. 52</b> Remoção entre municípios: edital e vaga, exceto: a pedido ou permuta, acompanhar cônjuge servidor, saúde, ex officio no interesse do serviço (ato motivado) e por conveniência da disciplina (<b>sem exigir vaga</b>). Pedido, cônjuge e disciplina não geram indenização.</p><p><b>Arts. 53 a 57</b> Delegado: remoção disciplinar após sindicância ou PAD e aprovação por maioria simples do <b>Órgão Especial</b>; ex officio exige vaga e razões fundamentadas. Remoção durante férias ou licença só vale após o término. Distribuição interna no município não é remoção.</p><p><b>Art. 58</b> Regime do trabalho policial: condições adversas, plantões, dever de imediata atuação, diligências em qualquer região. Plantão: descanso mínimo de <b>12 horas</b>, 40 horas semanais; o tempo em trânsito conta como trabalhado.</p><p><b>Arts. 59 a 66</b> Licenças: saúde (junta médica; é prorrogação se em até 60 dias), doença em pessoa da família (<b>90 dias</b> integrais, mais até 120 sem remuneração), maternidade ou paternidade, acidente em serviço (até <b>2 anos</b>), mandato sindical.</p><p><b>Arts. 67 a 70</b> Afastamentos: <b>8 dias</b> por casamento ou luto; cursos (3 meses, prorrogáveis); dever de servir 3 anos após estudo; cargo eletivo; interesse particular por até <b>2 anos</b>, sem vencimentos.</p>",
+"<p><b>Art. 71</b> Aposentadoria: compulsória (<b>70 anos</b>), voluntária e por invalidez (precedida de licença de até 2 anos). Regime especial por atividade de risco.</p><p><b>Art. 72</b> Voluntária, independente da idade: homem, 30 anos de contribuição e 20 de efetivo exercício policial; mulher, 30 e 20, ou <b>25 anos</b> de contribuição e de exercício. Conta-se o tempo de militar da PM e dos Bombeiros.</p><p><b>Art. 73</b> Proventos: integral (aposentadoria especial, acidente em serviço, doenças graves listadas) ou proporcional, à razão de <b>1/30</b> por ano. Invalidez por acidente em serviço gera auxílio-invalidez. Proventos reajustados na mesma data e percentual dos ativos.</p><p><b>Arts. 74 e 75</b> Pensão especial à família do policial morto em acidente ou no estrito cumprimento do dever, nunca inferior ao vencimento e vantagens; reajustada como o cargo equivalente.</p>",
+"<p><b>Art. 76</b> Carreiras: Delegado, Escrivão, Investigador, Médico-Legista e Perito Criminal (<b>cinco</b>). <b>Art. 78</b> Conceitos de carreira, cargo efetivo, nível (vertical) e grau (horizontal). <b>Art. 79</b> Atribuições essenciais e típicas de Estado; a coleta de vestígios em local de crime compete com primazia ao Perito.</p><p><b>Art. 81</b> Hierarquia e disciplina, com poder do Delegado, ressalvada a Polícia Técnico-Científica. <b>Não há subordinação</b> entre Escrivão, Investigador, Médico-Legista e Perito. <b>Art. 82</b> 40 horas semanais, máximo de 8 horas por dia e 12 de plantão.</p><p><b>Arts. 83 a 86</b> Ingresso: concurso de provas e títulos no primeiro grau do nível inicial, realizado pela Acadepol. Etapas: provas e títulos, psicotécnico, biomédico, biofísico e investigação social. Prova oral (Delegado) e digitação (Escrivão); a OAB participa do concurso de Delegado. Graduação em direito (Delegado) e em medicina (Médico-Legista).</p><p><b>Arts. 87 a 91</b> Estágio probatório: <b>3 anos</b>, avaliado por comissão. O Corregedor pode impugnar e dá parecer até <b>90 dias</b> antes do fim. O Chefe da PCMG declara a estabilidade.</p>",
+"<p><b>Art. 93</b> Progressão: de grau para grau no mesmo nível; exige efetivo exercício, interstício de <b>1 ano</b> e avaliação satisfatória.</p><p><b>Art. 94</b> Promoção: de nível para nível. Antiguidade (especial, aposentadoria), merecimento (mérito, bravura), invalidez e post mortem. Ocorre em <b>junho e dezembro</b>; invalidez, post mortem e aposentadoria a qualquer época, sem vagas. Exige interstício de <b>2 anos</b>, duas avaliações, aperfeiçoamento e escolaridade. A LC 188/2026 acrescentou regras sobre mandato eletivo (§§ 10 e 11).</p><p><b>Arts. 95 a 102</b> Delegado Substituto vira Titular A após a estabilidade. Promoção especial: Escrivão e Investigador, <b>8 anos</b> no nível. Perde progressão quem for suspenso por <b>30 dias</b> ou mais. Desempate: maior média, tempo no nível, na carreira, no serviço público estadual, no serviço público e maior idade.</p><p><b>Arts. 103 a 106</b> ADE: vantagem mensal; satisfatório é <b>70%</b> ou mais. Escala: 3 avaliações = 6%, 5 = 10%, 10 = 20%, 15 = 30%, 20 = 40%, 25 = 50%, 30 = 60%. Não é cumulativo; somado ao tempo de serviço não passa de <b>90%</b>. Na aposentadoria incorpora até 70% (30 avaliações).</p>"
+];
+function openTheory(k){$("th").textContent="Fase "+(k+1)+": "+P[k];$("tb").innerHTML=T[k];$("tgo").onclick=()=>start(Q.filter(q=>q.p===k));show("theory")}
+buildMenu();
+</script>
+</body>
+</html>
