@@ -33,6 +33,7 @@ body{font-family:'Inter',system-ui,sans-serif;padding-top:env(safe-area-inset-to
    <div>Combo <b id="combo" class="text-amber-400">0</b>🔥</div></div>
  </div>
 </header>
+<nav class="bg-black border-b border-yellow-900/40 overflow-x-auto"><div id="tabs" class="max-w-4xl mx-auto flex gap-1 px-3 py-2 text-sm whitespace-nowrap"></div></nav>
 <main class="max-w-3xl w-full mx-auto p-4 sm:p-6 flex-grow flex flex-col justify-center">
 
 <div id="menu" class="bg-slate-900/80 border border-slate-800 p-6 sm:p-8 rounded-2xl text-center space-y-5">
@@ -41,7 +42,8 @@ body{font-family:'Inter',system-ui,sans-serif;padding-top:env(safe-area-inset-to
  <div id="phases" class="grid sm:grid-cols-2 gap-3 text-left"></div>
 </div>
 
-<div id="theory" class="hidden p-6 sm:p-8 space-y-4"><div class="text-xs font-semibold uppercase tracking-widest text-blue-400">📚 Teoria antes da missão</div><h2 id="th" class="text-2xl font-bold"></h2><div id="tb" class="text-sm text-slate-300 max-h-[55vh] overflow-y-auto pr-2"></div><div class="flex gap-3 flex-wrap"><button onclick="toMenu()" class="px-5 py-3 bg-slate-800 rounded-md font-semibold">← Fases</button><button id="tgo" class="px-6 py-3 bg-blue-600 rounded-md font-bold uppercase">Iniciar missão ▶</button></div></div>
+<div id="tlist" class="hidden p-6 sm:p-8 space-y-4"></div><div id="prazos" class="hidden p-6 sm:p-8 space-y-4"></div><div id="resp" class="hidden p-6 sm:p-8 space-y-4"></div><div id="inc" class="hidden p-6 sm:p-8 space-y-4"></div>
+<div id="theory" class="hidden p-6 sm:p-8 space-y-4"><div class="text-xs font-semibold uppercase tracking-widest text-blue-400">📚 Teoria antes da missão</div><h2 id="th" class="text-2xl font-bold"></h2><div id="tb" class="text-sm text-slate-300 max-h-[55vh] overflow-y-auto pr-2"></div><div class="flex gap-3 flex-wrap"><button onclick="show('tlist')" class="px-5 py-3 bg-slate-800 rounded-md font-semibold">← Teoria</button><button id="tgo" class="px-6 py-3 bg-blue-600 rounded-md font-bold uppercase">Iniciar missão ▶</button></div></div>
 <div id="quiz" class="hidden bg-slate-900/90 border border-slate-800 p-6 sm:p-8 rounded-2xl space-y-5">
  <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden"><div id="bar" class="bg-blue-600 h-full transition-all" style="width:0"></div></div>
  <div class="flex justify-between text-xs font-semibold uppercase tracking-widest"><span id="tag" class="text-blue-400"></span><span id="type" class="text-amber-400"></span></div>
@@ -123,19 +125,63 @@ const D=[
 [8,"l","É satisfatório o resultado de ADI/AED igual ou superior a ______.","70%","50%|60%|80%","Art. 104, § 1º."],
 [8,"m","Pelo art. 105, quantas avaliações satisfatórias dão ADE de 6%, e quantas dão 60%?","3 e 30","5 e 25|10 e 30|3 e 25","Art. 105, I e VII."],
 [8,"l","ADE somado a adicionais por tempo de serviço não pode exceder ______ do vencimento básico.","90%","70%|80%|100%","Art. 103, § 5º."],
-[8,"v","Pela LC nº 188/2026, o tempo de mandato eletivo conta para todos os efeitos, exceto promoção por merecimento.",true,"","Art. 94, § 10 (acrescentado em 2026)."]
+[8,"v","Pela LC nº 188/2026, o tempo de mandato eletivo conta para todos os efeitos, exceto promoção por merecimento.",true,"","Art. 94, § 10 (acrescentado em 2026)."],
+[0,'v','A PCMG tem por função, entre outras, a preservação das instituições políticas e jurídicas.',true,'','Art. 2º, III.'],
+[0,'m','Qual NÃO é função de polícia judiciária do art. 10?','Julgar e condenar o autor da infração','Instaurar inquérito policial|Representar por busca e apreensão|Decidir sobre flagrante e fiança','Art. 10: a PCMG investiga e representa; julgar é função do Judiciário.'],
+[0,'v','Os atos de polícia judiciária são fiscalizados direta ou indiretamente pelo Corregedor-Geral de Polícia Civil.',true,'','Art. 11, parágrafo único.'],
+[0,'m','Planejamento e orçamento subordinam-se tecnicamente a:','Secretarias de Estado de Planejamento e Gestão e de Fazenda','ao Chefe Adjunto|ao Tribunal de Contas|à Corregedoria-Geral','Art. 5º, parágrafo único (administrativamente, ao Chefe da PCMG).'],
+[1,'l','O art. 14 diz que a PCMG apura infrações penais e atos infracionais, exceto os ______.','militares','tributários|eleitorais|ambientais','Art. 14.'],
+[1,'m','A PCMG representa ao Judiciário pelas medidas cautelares por meio de quem?','Do Delegado de Polícia','Do Corregedor-Geral|Do Chefe Adjunto|Do Investigador','Art. 16, III.'],
+[1,'v','Compete à PCMG organizar estatísticas criminais e realizar análise criminal.',true,'','Art. 16, XVII.'],
+[1,'m','Qual atividade consta como competência da PCMG?','Controle e fiscalização de suas armas, munições e explosivos','Policiamento ostensivo fardado|Julgamento de crimes militares|Fiscalização de tributos estaduais','Art. 16, VIII.'],
+[1,'v','O inciso XI do art. 16 (trânsito) continua em vigor.',false,'','Foi revogado pela Lei 24.313/2023.'],
+[1,'m','Em inteligência, compete à PCMG:','Organizar ações de inteligência e participar de sistemas integrados de informações','Apenas arquivar documentos físicos|Delegar a inteligência a particulares|Somente receber dados da PM','Art. 16, XVI.'],
+[1,'l','A PCMG integra, para fins operacionais, o Sistema de ______.','Defesa Social','Justiça Criminal|Segurança Privada|Proteção Civil','Art. 15.'],
+[2,'l','O Conselho Superior é presidido pelo ______.','Chefe da PCMG','Chefe Adjunto|Corregedor-Geral|Governador','Art. 25, I.'],
+[2,'m','Quem preside a Câmara Disciplinar?','O Chefe Adjunto da PCMG','O Chefe da PCMG|O Corregedor-Geral|O Diretor da Acadepol','Art. 30.'],
+[2,'v','O Chefe da PCMG tem prerrogativas, vantagens e padrão remuneratório de Secretário de Estado.',true,'','Art. 19.'],
+[2,'m','Quem pode propor ao Chefe o afastamento preliminar do servidor?','O Corregedor-Geral de Polícia Civil','O Chefe de Gabinete|O Superintendente de Planejamento|O Diretor da Acadepol','Art. 33, X.'],
+[3,'v','Os Departamentos de Polícia Civil subordinam-se à Superintendência de Investigação e Polícia Judiciária.',true,'','Art. 17, § 2º.'],
+[3,'m','O Instituto de Identificação subordina-se a:','Superintendência de Informações e Inteligência Policial','Superintendência de Polícia Técnico-Científica|Academia de Polícia Civil|Corregedoria-Geral','Art. 17, § 3º.'],
+[3,'v','O Instituto de Criminologia subordina-se à Academia de Polícia Civil.',true,'','Art. 17, § 2º.'],
+[3,'m','Quem remove Investigadores e Escrivães, a pedido ou por permuta, dentro de um Departamento?','Superintendência de Investigação e Polícia Judiciária','Corregedoria-Geral|Conselho Superior|Academia de Polícia Civil','Art. 38, V.'],
+[3,'m','A Casa de Custódia da Polícia Civil recolhe:','policiais civis da ativa ou aposentados, inclusive demitidos, em procedimento judicial','qualquer preso comum da comarca|apenas policiais militares|menores infratores','Art. 38, X.'],
+[4,'v','O porte livre de arma em todo o território nacional é prerrogativa do policial civil, nos termos da legislação específica.',true,'','Art. 45, III.'],
+[4,'m','O que o art. 47, § 3º veda?','Reter ou descontar vencimentos por processo administrativo enquanto couber recurso','Conceder férias a policial preso|Pagar 13º salário|Conceder auxílio-natalidade','Art. 47, § 3º.'],
+[4,'l','O auxílio-natalidade equivale à ______ percebida pelo servidor no nascimento ou na adoção.','remuneração','metade da remuneração|diária|gratificação natalina','Art. 49, XIV.'],
+[4,'v','O policial civil em liberdade provisória retorna ao exercício das funções.',true,'','Art. 47, § 1º.'],
+[5,'m','A remoção ex officio durante férias, férias-prêmio ou licença para saúde:','só produz efeitos após o término do afastamento','é imediata|é proibida em qualquer hipótese|depende do Governador','Art. 56.'],
+[5,'v','O policial licenciado para tratamento de saúde pode dedicar-se a outra atividade remunerada.',false,'','Art. 61.'],
+[5,'l','A licença para tratamento de saúde depende de inspeção por ______ oficial.','junta médica','perito criminal|comissão disciplinar|serviço social','Art. 62.'],
+[5,'m','A remoção disciplinar de Delegado exige aprovação por maioria simples do:','Órgão Especial do Conselho Superior','Chefe Adjunto|Governador|Corregedor-Geral','Art. 53.'],
+[6,'v','A aposentadoria por invalidez é precedida de licença de até dois anos, salvo laudo anterior de incapacidade definitiva.',true,'','Art. 71, § 3º.'],
+[6,'l','Homem: aposentadoria voluntária com ______ anos de contribuição e ao menos 20 de efetivo exercício policial.','trinta','vinte e cinco|trinta e cinco|vinte','Art. 72, I.'],
+[6,'m','Pode contar para o efetivo exercício policial o tempo prestado como:','militar da PM ou dos Bombeiros de MG','servidor de Câmara Municipal|empregado de empresa privada|professor universitário','Art. 72, § 2º.'],
+[6,'v','A pensão especial por morte no cumprimento do dever não pode ser inferior ao vencimento e vantagens do policial.',true,'','Art. 74.'],
+[6,'m','O auxílio-invalidez (acidente em serviço) tem valor:','igual à remuneração de igual nível, incorporado ao provento','de um salário mínimo|de metade do provento|de 1/30 do vencimento','Art. 73, § 1º.'],
+[6,'v','O provento integral é reajustado na mesma data e percentual da remuneração dos policiais da ativa.',true,'','Art. 73, § 2º.'],
+[6,'m','O regime especial de aposentadoria do policial civil decorre de:','exercício de atividade de risco','tempo de magistério|idade mínima de 75 anos|condição de saúde apenas','Art. 71, § 2º.'],
+[7,'m','Quem realiza, privativamente, o concurso público e o curso de formação?','Academia de Polícia Civil','Corregedoria-Geral|Conselho Superior|Chefia Adjunta','Art. 83, § 1º.'],
+[7,'v','As etapas de psicotécnico, biomédico, biofísico e investigação social têm caráter eliminatório.',true,'','Art. 84, § 1º.'],
+[7,'l','O aprovado, após nomeação e posse, é matriculado automaticamente no curso de ______.','formação técnico-profissional','extensão|pós-graduação|especialização','Art. 83, § 2º.'],
+[7,'m','Qual a carga horária semanal dos policiais civis?','Quarenta horas','Trinta horas|Quarenta e quatro horas|Trinta e seis horas','Art. 82.'],
+[8,'m','Concluído o estágio probatório, o policial apto é posicionado no:','grau D do nível de ingresso','grau A do nível inicial|último nível|grau C do nível seguinte','Art. 97.'],
+[8,'v','O Delegado Substituto passa a Titular A após a declaração de estabilidade.',true,'','Art. 95.'],
+[8,'m','Qual NÃO é critério de desempate na promoção?','Sorteio','Maior média das avaliações|Maior tempo de serviço no nível|Maior idade','Art. 101.'],
+[8,'v','O ADE continua sendo pago no percentual adquirido até atingir o número de avaliações do nível seguinte.',true,'','Art. 105, § 1º.']
 ];
 const Q=D.map(([p,t,q,a,w,e])=>({p,t,q,a,w:w?w.split("|"):[],e}));
 const $=i=>document.getElementById(i);
 const TN={m:"Múltipla escolha",l:"Complete a lacuna",v:"Verdadeiro ou Falso"};
 let list=[],i=0,score=0,hits=0,combo=0,best=0,done=true,errs=[],cur=null;
 const sh=a=>a.map(x=>[Math.random(),x]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
-function show(id){["menu","theory","quiz","result"].forEach(s=>$(s).classList.toggle("hidden",s!==id))}
+function show(id){['menu','theory','quiz','result','tlist','prazos','resp','inc'].forEach(s=>$(s).classList.toggle('hidden',s!==id));hl(id)}
+function hl(id){const m={theory:'tlist',quiz:'menu',result:'menu'};const a=m[id]||id;document.querySelectorAll('#tabs button').forEach(b=>b.className='px-4 py-2 rounded '+(b.dataset.id===a?'bg-blue-600 font-bold uppercase':'bg-slate-900 text-slate-300'))}
 function toMenu(){show("menu");$("cq").textContent=0;$("tq").textContent=0;$("score").textContent=0;$("combo").textContent=0}
 function buildMenu(){
  const c=$("phases");
  const add=(t,s,f)=>{const b=document.createElement("button");b.className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-blue-500/60 transition text-left";b.innerHTML=`<div class="font-semibold text-sm">${t}</div><div class="text-xs text-slate-400 mt-1">${s}</div>`;b.onclick=f;c.appendChild(b)};
- P.forEach((n,k)=>add(`Fase ${k+1}: ${n}`,"Teoria + "+Q.filter(q=>q.p===k).length+" questões",()=>openTheory(k)));
+ P.forEach((n,k)=>add(`Fase ${k+1}: ${n}`,Q.filter(q=>q.p===k).length+" questões",()=>start(Q.filter(q=>q.p===k))));
  add("🔥 Maratona","Todas as fases misturadas ("+Q.length+" questões)",()=>start(Q));
 }
 function start(l){list=sh(l);i=0;score=0;hits=0;combo=0;best=0;errs=[];$("tq").textContent=list.length;$("score").textContent=0;$("combo").textContent=0;show("quiz");load()}
@@ -187,7 +233,81 @@ const T=[
 "<p><b>Art. 93</b> Progressão: de grau para grau no mesmo nível; exige efetivo exercício, interstício de <b>1 ano</b> e avaliação satisfatória.</p><p><b>Art. 94</b> Promoção: de nível para nível. Antiguidade (especial, aposentadoria), merecimento (mérito, bravura), invalidez e post mortem. Ocorre em <b>junho e dezembro</b>; invalidez, post mortem e aposentadoria a qualquer época, sem vagas. Exige interstício de <b>2 anos</b>, duas avaliações, aperfeiçoamento e escolaridade. A LC 188/2026 acrescentou regras sobre mandato eletivo (§§ 10 e 11).</p><p><b>Arts. 95 a 102</b> Delegado Substituto vira Titular A após a estabilidade. Promoção especial: Escrivão e Investigador, <b>8 anos</b> no nível. Perde progressão quem for suspenso por <b>30 dias</b> ou mais. Desempate: maior média, tempo no nível, na carreira, no serviço público estadual, no serviço público e maior idade.</p><p><b>Arts. 103 a 106</b> ADE: vantagem mensal; satisfatório é <b>70%</b> ou mais. Escala: 3 avaliações = 6%, 5 = 10%, 10 = 20%, 15 = 30%, 20 = 40%, 25 = 50%, 30 = 60%. Não é cumulativo; somado ao tempo de serviço não passa de <b>90%</b>. Na aposentadoria incorpora até 70% (30 avaliações).</p>"
 ];
 function openTheory(k){$("th").textContent="Fase "+(k+1)+": "+P[k];$("tb").innerHTML=T[k];$("tgo").onclick=()=>start(Q.filter(q=>q.p===k));show("theory")}
-buildMenu();
+const PZ=[
+['Chefe da PCMG','20 anos de efetivo serviço, nível final de Delegado','18, p.ú.',3],
+['Chefe Adjunto','20 anos de efetivo serviço','23',3],
+['Demais titulares (Superintendências, Corregedor etc.)','15 anos de efetivo serviço, nível final','17, §§ 8º e 9º',3],
+['Direção da Superintendência de Polícia Técnico-Científica','Médico-Legista ou Perito, último nível, 15 anos, alternadamente','41, § 1º',2],
+['Afastamento preliminar (Corregedoria)','até 90 dias','33, X',3],
+['Afastamento disciplinar de 90 a 180 dias','Ato do Chefe + maioria simples do Conselho; findos 180 dias, o Corregedor submete ao Conselho','33, §§ 2º e 3º',2],
+['Diligências determinadas pela Superintendência','até 30 dias','38, II',3],
+['Prisão de Delegado em flagrante inafiançável','comunicação ao Chefe em 24 horas','46, II',3],
+['Policial preso provisoriamente','afastado com remuneração; condenado sem demissão recebe 1/3','47',2],
+['Ajuda de custo','1 mês de vencimento','49, I',1],
+['Indenização securitária','20 vezes a remuneração','49, XII',1],
+['Adicional de férias','1/3 da remuneração','49, X',2],
+['Indenização de vestimenta','40% do vencimento do nível I de Investigador, paga em abril','50',2],
+['Reposição ao erário','parcelas de até 1/10 dos vencimentos','51, p.ú.',2],
+['Plantão','descanso de 12 horas; 40 horas semanais','58, § 2º',3],
+['Prorrogação de licença para saúde','nova licença em até 60 dias do término da anterior','62, § 1º',2],
+['Verificação de invalidez','3 meses de licença nos 12 meses anteriores','62, § 2º',1],
+['Licença por doença em pessoa da família','90 dias integrais + até 120 sem remuneração; sem renovação por 12 meses','65',3],
+['Licença por acidente em serviço','até 2 anos; prova do acidente em 30 dias','66',3],
+['Afastamento por casamento ou luto','8 dias consecutivos','67',3],
+['Afastamento para cursos','3 meses, prorrogáveis até 3; servir 3 anos depois; comprovar aproveitamento em 30 dias; mais de 6 meses exige o Governador','68',2],
+['Interesse particular','até 2 anos, sem vencimentos','70, IV',3],
+['Aposentadoria compulsória','70 anos','71, § 1º',3],
+['Aposentadoria voluntária','Homem 30/20; mulher 30/20 ou 25/25 (contribuição/exercício)','72',3],
+['Provento proporcional','1/30 por ano de serviço','73, II',2],
+['Estágio probatório','3 anos; parecer do Corregedor até 90 dias antes do fim','87 e 90',3],
+['Jornada','40 horas semanais; até 8 por dia; plantão até 12 horas','82',3],
+['Progressão e promoção','interstício de 1 ano (progressão) e 2 anos (promoção)','93 e 94',3],
+['Promoção especial','8 anos no mesmo nível (Escrivão e Investigador)','96',2],
+['Calendário de promoção','junho e dezembro','94, § 2º',3],
+['Perda de progressão e promoção','suspensão de 30 dias ou mais','99, I',2],
+['ADE','satisfatório: 70%; teto com adicionais por tempo de serviço: 90%','103 a 105',3],
+['Escala do ADE','3 = 6%, 5 = 10%, 10 = 20%, 15 = 30%, 20 = 40%, 25 = 50%, 30 = 60%','105',3]];
+const RS=[
+['Chefe da PCMG','Direção superior; preside o Conselho Superior; instaura PAD e aplica sanções; decide remoção disciplinar; suspende porte de arma; declara estabilidade; afasta policial preso','22, 47 § 4º, 91'],
+['Governador','Nomeia o Chefe, o Adjunto e os titulares; autoriza afastamento no exterior ou por mais de 6 meses','18, 68 § 5º'],
+['Chefe Adjunto','Substitui o Chefe; preside a Câmara Disciplinar','23 e 30'],
+['Conselho Superior','Planejamento estratégico, atos normativos, localização de unidades, promoção, medalhas; não homologa estágio por maioria simples','26, 88, 90'],
+['Órgão Especial','Recursos contra negação de inquérito e avocação; remoção e promoção de Delegados (maioria simples)','29, 53, 55'],
+['Câmara Disciplinar','Julga recursos contra atos do Corregedor; recomenda PAD; propõe remoção disciplinar','30'],
+['Câmara de Planejamento e Orçamento','Subsidia o orçamento e acompanha sua execução','31'],
+['Corregedoria-Geral','Correição, PAD, sindicância, avocação de inquéritos, antecedentes funcionais, estágio probatório e impugnação','32, 33, 89, 90'],
+['Gabinete da Chefia','Assessoria política e administrativa; relações institucionais; comunicação social','35'],
+['Academia de Polícia Civil','Concurso e curso de formação; ensino, treinamento, recrutamento e seleção (privativos)','36, 83'],
+['Superintendência de Investigação e Polícia Judiciária','Uniformidade da investigação; Departamentos, Polinter e Casa de Custódia; remoções internas','38'],
+['Superintendência de Informações e Inteligência','Inteligência, estatística, telecomunicações, informática e bancos de dados','39'],
+['Superintendência de Polícia Técnico-Científica','Perícias criminais e médico-legais; Institutos de Criminalística e Médico-Legal','41'],
+['Superintendência de Planejamento, Gestão e Finanças','Orçamento, contabilidade, pessoal, patrimônio, frota, leilões e convênios','44'],
+['Delegado de Polícia','Dirige a polícia judiciária; instaura inquérito; representa por cautelares; comparece ao local de crime','10, 11, 16 III'],
+['Perito Criminal e Médico-Legista','Perícia com autonomia técnica, científica e funcional; coleta de vestígios com primazia (Perito)','43, 79 § 3º'],
+['Investigador de Polícia','Analisa o local liberado para obter elementos; sem subordinação a Escrivão, Perito e Médico-Legista','79 § 3º, 81 § 6º'],
+['Comissão do estágio probatório','Delegados da Corregedoria, da Superintendência e da Acadepol (mais um policial de nível superior nas demais carreiras)','88'],
+['OAB','Participa das provas de conhecimento do concurso de Delegado','84 § 4º']];
+const IN=[
+['Prazos e números',5,'Trocam o número (20/15 anos, 90/30 dias, 24h, 3 anos). Decore a aba Prazos.'],
+['Competência por órgão',5,'Pegadinha: dar a um órgão a competência de outro (Corregedoria, Conselho, Órgão Especial).'],
+['Composição e ordem (arts. 17, 20 e 25)',4,'Ordem de substituição do Chefe e membros do Conselho.'],
+['Estágio probatório e estabilidade',4,'Quem avalia, quem impugna, quem decide e quem declara.'],
+['Promoção, progressão e desempate',4,'Interstícios, junho e dezembro, ordem dos critérios de desempate.'],
+['ADE (arts. 103 a 106)',4,'Tabela de percentuais, teto de 90% e 70% como satisfatório.'],
+['Remoção',4,'Hipóteses, quando dispensa vaga e quem aprova a remoção de Delegado.'],
+['Prerrogativas (arts. 45 e 46)',3,'Porte livre, prisão especial, Delegado preso só por ordem judicial escrita.'],
+['Licenças e afastamentos',3,'90+120 dias, 2 anos, 8 dias e quem concede.'],
+['Princípios e funções (arts. 2º a 4º)',3,'Listas de princípios: marque o que NÃO consta.'],
+['Aposentadoria e proventos',3,'70 anos, 30/20/25 e 1/30.'],
+['Revogações e novidades',2,'Detran revogado (art. 37 e art. 16, XI); LC 188/2026 no art. 94.']];
+function tbl(h,r){return '<div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr>'+h.map(x=>'<th class="text-left p-2 text-yellow-500 border-b border-yellow-900/50">'+x+'</th>').join('')+'</tr></thead><tbody>'+r.map(w=>'<tr class="border-b border-slate-800">'+w.map(x=>'<td class="p-2 align-top">'+x+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>'}
+$('prazos').innerHTML='<h2 class="text-2xl font-bold">⏱️ Prazos e números</h2><p class="text-xs text-slate-400">Cobrança estimada: ★★★ muito provável, ★ menos provável.</p>'+tbl(['Assunto','Prazo ou valor','Art.','Cobrança'],PZ.map(r=>[r[0],'<b class="text-yellow-400">'+r[1]+'</b>',r[2],'★'.repeat(r[3])]));
+$('resp').innerHTML='<h2 class="text-2xl font-bold">👮 Responsabilidades</h2><p class="text-xs text-slate-400">Quem faz o que: a base das questões de competência.</p>'+tbl(['Quem','Responsabilidade','Art.'],RS);
+$('inc').innerHTML='<h2 class="text-2xl font-bold">📊 Mais cobrados em concurso</h2><p class="text-xs text-slate-400">Estimativa baseada no padrão de cobrança de leis orgânicas (literalidade, números e competências). Não é estatística oficial de banca: confira sempre o edital.</p>'+IN.map((r,i)=>'<div class="space-y-1"><div class="flex justify-between text-sm"><b>'+(i+1)+'. '+r[0]+'</b><span class="text-yellow-400">'+'★'.repeat(r[1])+'</span></div><div class="h-2 bg-slate-800 rounded"><div class="h-2 bg-yellow-500 rounded" style="width:'+r[1]*20+'%"></div></div><div class="text-xs text-slate-400">'+r[2]+'</div></div>').join('');
+$('tlist').innerHTML='<h2 class="text-2xl font-bold">📚 Teoria da Lei</h2><p class="text-sm text-slate-300">Estude cada pasta antes das questões: os arts. 1º a 106 estão organizados em 9 temas.</p><div id="tl" class="grid sm:grid-cols-2 gap-3"></div>';
+P.forEach((n,k)=>{const b=document.createElement('button');b.className='p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-blue-500/60 text-left';b.innerHTML='<div class="font-semibold text-sm">📁 Pasta '+(k+1)+'</div><div class="text-xs text-slate-400 mt-1">'+n+'</div>';b.onclick=()=>openTheory(k);$('tl').appendChild(b)});
+[['tlist','📚 Teoria'],['menu','🎯 Questões'],['prazos','⏱️ Prazos'],['resp','👮 Responsabilidades'],['inc','📊 Mais cobrados']].forEach(([id,t])=>{const b=document.createElement('button');b.dataset.id=id;b.textContent=t;b.onclick=()=>id==='menu'?toMenu():show(id);$('tabs').appendChild(b)});
+buildMenu();show('tlist');
 </script>
 </body>
 </html>
