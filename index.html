@@ -43,6 +43,27 @@ body{font-family:'Inter',system-ui,sans-serif;padding-top:env(safe-area-inset-to
 </div>
 
 <div id="tlist" class="hidden p-6 sm:p-8 space-y-4"></div><div id="prazos" class="hidden p-6 sm:p-8 space-y-4"></div><div id="resp" class="hidden p-6 sm:p-8 space-y-4"></div><div id="inc" class="hidden p-6 sm:p-8 space-y-4"></div>
+
+<!-- ===== NOVO: Simulado de Língua Portuguesa ===== -->
+<div id="port" class="hidden p-6 sm:p-8 space-y-4">
+ <h2 class="text-2xl font-bold">🇧🇷 Simulado de Língua Portuguesa</h2>
+ <p class="text-sm text-slate-300 text-center">Preparação para concursos policiais<br><b>20 questões | 4 alternativas por questão</b></p>
+ <div id="pq" class="space-y-4"></div>
+ <div class="flex gap-3 flex-wrap">
+  <button type="button" onclick="portCorrigir()" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-md font-bold uppercase">Corrigir respostas</button>
+  <button type="button" onclick="portReset()" class="px-6 py-3 bg-slate-800 rounded-md font-semibold">Refazer simulado</button>
+ </div>
+ <div id="pres" class="hidden bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm space-y-2"></div>
+ <div id="pgab" class="hidden bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm space-y-2"><h3 class="font-bold text-yellow-500 text-base">Gabarito comentado</h3><ol id="pgl" class="space-y-1 list-decimal pl-5"></ol></div>
+</div>
+
+<!-- ===== NOVO: Código Penal arts. 121 a 128 ===== -->
+<div id="cp" class="hidden p-6 sm:p-8 space-y-4">
+ <h2 class="text-2xl font-bold">⚖️ Código Penal · Arts. 121 a 128</h2>
+ <p class="text-xs text-slate-400">Crimes contra a vida: homicídio, feminicídio, vicaricídio, induzimento ao suicídio, infanticídio e aborto.</p>
+ <div id="cpt" class="text-sm text-slate-300 space-y-1"></div>
+</div>
+
 <div id="theory" class="hidden p-6 sm:p-8 space-y-4"><div class="text-xs font-semibold uppercase tracking-widest text-blue-400">📚 Teoria antes da missão</div><h2 id="th" class="text-2xl font-bold"></h2><div id="tb" class="text-sm text-slate-300 max-h-[55vh] overflow-y-auto pr-2"></div><div class="flex gap-3 flex-wrap"><button onclick="show('tlist')" class="px-5 py-3 bg-slate-800 rounded-md font-semibold">← Teoria</button><button id="tgo" class="px-6 py-3 bg-blue-600 rounded-md font-bold uppercase">Iniciar missão ▶</button></div></div>
 <div id="quiz" class="hidden bg-slate-900/90 border border-slate-800 p-6 sm:p-8 rounded-2xl space-y-5">
  <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden"><div id="bar" class="bg-blue-600 h-full transition-all" style="width:0"></div></div>
@@ -175,7 +196,7 @@ const $=i=>document.getElementById(i);
 const TN={m:"Múltipla escolha",l:"Complete a lacuna",v:"Verdadeiro ou Falso"};
 let list=[],i=0,score=0,hits=0,combo=0,best=0,done=true,errs=[],cur=null;
 const sh=a=>a.map(x=>[Math.random(),x]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
-function show(id){['menu','theory','quiz','result','tlist','prazos','resp','inc'].forEach(s=>$(s).classList.toggle('hidden',s!==id));hl(id)}
+function show(id){['menu','theory','quiz','result','tlist','prazos','resp','inc','port','cp'].forEach(s=>$(s).classList.toggle('hidden',s!==id));hl(id)}
 function hl(id){const m={theory:'tlist',quiz:'menu',result:'menu'};const a=m[id]||id;document.querySelectorAll('#tabs button').forEach(b=>b.className='px-4 py-2 rounded '+(b.dataset.id===a?'bg-blue-600 font-bold uppercase':'bg-slate-900 text-slate-300'))}
 function toMenu(){show("menu");$("cq").textContent=0;$("tq").textContent=0;$("score").textContent=0;$("combo").textContent=0}
 function buildMenu(){
@@ -306,8 +327,178 @@ $('resp').innerHTML='<h2 class="text-2xl font-bold">👮 Responsabilidades</h2><
 $('inc').innerHTML='<h2 class="text-2xl font-bold">📊 Mais cobrados em concurso</h2><p class="text-xs text-slate-400">Estimativa baseada no padrão de cobrança de leis orgânicas (literalidade, números e competências). Não é estatística oficial de banca: confira sempre o edital.</p>'+IN.map((r,i)=>'<div class="space-y-1"><div class="flex justify-between text-sm"><b>'+(i+1)+'. '+r[0]+'</b><span class="text-yellow-400">'+'★'.repeat(r[1])+'</span></div><div class="h-2 bg-slate-800 rounded"><div class="h-2 bg-yellow-500 rounded" style="width:'+r[1]*20+'%"></div></div><div class="text-xs text-slate-400">'+r[2]+'</div></div>').join('');
 $('tlist').innerHTML='<h2 class="text-2xl font-bold">📚 Teoria da Lei</h2><p class="text-sm text-slate-300">Estude cada pasta antes das questões: os arts. 1º a 106 estão organizados em 9 temas.</p><div id="tl" class="grid sm:grid-cols-2 gap-3"></div>';
 P.forEach((n,k)=>{const b=document.createElement('button');b.className='p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-blue-500/60 text-left';b.innerHTML='<div class="font-semibold text-sm">📁 Pasta '+(k+1)+'</div><div class="text-xs text-slate-400 mt-1">'+n+'</div>';b.onclick=()=>openTheory(k);$('tl').appendChild(b)});
-[['tlist','📚 Teoria'],['menu','🎯 Questões'],['prazos','⏱️ Prazos'],['resp','👮 Responsabilidades'],['inc','📊 Mais cobrados']].forEach(([id,t])=>{const b=document.createElement('button');b.dataset.id=id;b.textContent=t;b.onclick=()=>id==='menu'?toMenu():show(id);$('tabs').appendChild(b)});
+[['tlist','📚 Teoria'],['menu','🎯 Questões'],['prazos','⏱️ Prazos'],['resp','👮 Responsabilidades'],['inc','📊 Mais cobrados'],['port','🇧🇷 Português'],['cp','⚖️ Cód. Penal']].forEach(([id,t])=>{const b=document.createElement('button');b.dataset.id=id;b.textContent=t;b.onclick=()=>id==='menu'?toMenu():show(id);$('tabs').appendChild(b)});
 buildMenu();show('tlist');
+</script>
+
+<!-- ===== NOVO: Português (simulado) e Código Penal (arts. 121-128) ===== -->
+<script>
+/* [parte, enunciado, [A,B,C,D], resposta, explicação] */
+const PT_PARTES=["Parte 1 — Crase","Parte 2 — Regência verbal e nominal","Parte 3 — Concordância verbal","Parte 4 — Concordância nominal"];
+const PT=[
+[0,"Assinale a alternativa em que o uso da crase está correto.",["O candidato começou à estudar cedo.","O policial dirigiu-se à delegacia.","O documento foi entregue à ele.","Chegamos à pé ao local."],"B","A expressão “dirigir-se” exige a preposição “a”, e “delegacia” admite o artigo “a”: a + a = à."],
+[0,"Assinale a frase em que NÃO deve ocorrer crase.",["A equipe retornou à unidade.","O agente fez referência à ocorrência.","O candidato começou a revisar o conteúdo.","A testemunha compareceu à audiência."],"C","Antes de verbo no infinitivo, como “revisar”, não ocorre crase."],
+[0,"Complete corretamente: “O investigador ficou frente ___ frente com o suspeito.”",["a","à","há","às"],"A","Na locução “frente a frente”, não se usa crase."],
+[0,"Assinale a alternativa em que a crase é obrigatória.",["O agente começou a trabalhar.","O relatório foi entregue a Pedro.","O suspeito ficou cara a cara com o policial.","O servidor obedeceu à ordem recebida."],"D","O verbo “obedecer” exige a preposição “a”; “ordem” admite artigo feminino “a”."],
+[0,"Assinale a alternativa correta quanto ao uso da crase.",["O documento foi enviado à ele.","A equipe chegou às oito horas.","O agente saiu à cavalo.","A testemunha começou à falar."],"B","Na indicação de horas determinadas, normalmente se usa crase: “às oito horas”."],
+[1,"De acordo com a norma-padrão, assinale a frase correta.",["O candidato assistiu o filme.","O candidato obedeceu o regulamento.","O candidato assistiu ao filme.","O candidato preferiu mais estudar do que descansar."],"C","No sentido de ver, “assistir” exige a preposição “a”: assistir ao filme."],
+[1,"Complete corretamente: “O servidor obedeceu ___ determinações superiores.”",["às","as","das","pelas"],"A","“Obedecer” rege a preposição “a”: obedeceu a + as determinações = às determinações."],
+[1,"Assinale a alternativa correta quanto à regência nominal.",["O candidato estava apto com o cargo.","O servidor era favorável com a proposta.","O agente tinha aversão com a violência.","O candidato estava apto ao cargo."],"D","“Apto” pode reger a preposição “a”: apto ao cargo."],
+[1,"Complete corretamente: “O investigador aspirava ___ cargo de chefia.”",["o","ao","pelo","no"],"B","No sentido de desejar ou almejar, “aspirar” rege a preposição “a”: aspirar ao cargo."],
+[1,"Assinale a alternativa correta segundo a norma-padrão.",["Prefiro mais estudar do que descansar.","Prefiro estudar do que descansar.","Prefiro estudar a descansar.","Prefiro estudar que descansar."],"C","O verbo “preferir”, na construção comparativa padrão, rege “a”: preferir uma coisa a outra."],
+[2,"Assinale a frase com concordância verbal correta.",["Os candidatos chegaram cedo.","Os candidatos chegou cedo.","O candidato chegaram cedo.","A equipe chegaram cedo."],"A","O verbo deve concordar com o sujeito “os candidatos”, que está no plural."],
+[2,"Assinale a alternativa correta.",["Fazem dois anos que ele estuda.","Haviam muitas pessoas na sala.","Existe muitas vagas disponíveis.","Faz dois anos que ele estuda."],"D","O verbo “fazer”, indicando tempo decorrido, é impessoal e fica na terceira pessoa do singular."],
+[2,"Complete: “Mais de um candidato ___ à prova.”",["faltaram","faltou","faltariam","faltassem"],"B","A expressão “mais de um”, em regra, leva o verbo ao singular: “Mais de um candidato faltou”."],
+[2,"Assinale a frase correta.",["Haviam problemas no relatório.","Houveram problemas no relatório.","Houve problemas no relatório.","Haviam existido muitos problema."],"C","“Haver”, no sentido de existir, é impessoal e fica no singular: houve problemas."],
+[2,"Assinale a alternativa correta.",["A maioria dos candidatos foi aprovada.","A maioria dos candidatos foram aprovada.","A maioria dos candidatos foram aprovado.","A maioria dos candidatos foi aprovados."],"A","O núcleo do sujeito é “maioria”, singular. A concordância no singular é adequada."],
+[3,"Assinale a frase correta.",["Segue anexo as cópias do documento.","Seguem anexas as cópias do documento.","Seguem anexo as cópias do documento.","Segue anexas as cópias do documento."],"B","“Seguem” concorda com “as cópias”, e “anexas” também concorda com esse substantivo feminino plural."],
+[3,"Complete corretamente: “As servidoras estavam ___ cansadas após o plantão.”",["meia","meios","meio cansadas e meias cansadas","meio"],"D","“Meio”, com sentido de “um pouco”, é advérbio e não varia: meio cansadas."],
+[3,"Assinale a alternativa correta.",["É proibida a entrada de pessoas não autorizadas.","É proibido a entrada de pessoas não autorizadas.","É proibidas a entrada de pessoas não autorizadas.","É proibidos a entrada de pessoas não autorizadas."],"A","Com artigo definido (“a entrada”), a expressão “é proibido” concorda com o substantivo: “é proibida a entrada”."],
+[3,"Complete corretamente: “Muito ___, a testemunha agradeceu aos policiais.”",["obrigado","obrigada","obrigada ou obrigado, conforme quem agradece","obrigados, em qualquer caso"],"C","“Obrigado/obrigada” concorda com a pessoa que agradece. A forma depende de quem é a testemunha."],
+[3,"Assinale a frase correta quanto à concordância nominal.",["As provas estavam bastante difíceis e complicadas, e os candidatos ficaram bastantes preocupados.","As provas estavam bastante difíceis, e os candidatos ficaram bastante preocupados.","As provas estavam bastantes difícil, e os candidatos ficaram bastante preocupado.","As provas estava bastante difíceis, e os candidatos ficou bastante preocupados."],"B","“Bastante”, quando significa “muito”, é advérbio e fica invariável. “Provas” e “candidatos” exigem os verbos e adjetivos correspondentes no plural."]
+];
+(function(){
+ const box=document.getElementById('pq');
+ let lastPart=-1;
+ PT.forEach((q,n)=>{
+  if(q[0]!==lastPart){lastPart=q[0];const h=document.createElement('h3');h.className='text-lg font-bold text-yellow-500 pt-2';h.textContent=PT_PARTES[q[0]];box.appendChild(h)}
+  const c=document.createElement('div');c.className='pt-card bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-1';c.dataset.resposta=q[3];
+  const t=document.createElement('div');t.className='font-semibold text-blue-400 mb-1';t.textContent=(n+1)+'. '+q[1];c.appendChild(t);
+  q[2].forEach((op,k)=>{
+   const L=String.fromCharCode(65+k);
+   const lb=document.createElement('label');lb.className='block p-2 rounded cursor-pointer hover:bg-slate-800 text-sm';
+   const r=document.createElement('input');r.type='radio';r.name='pq'+(n+1);r.value=L;r.className='mr-2';
+   lb.append(r,document.createTextNode(L+') '+op));c.appendChild(lb)});
+  const e=document.createElement('p');e.className='pt-exp hidden text-xs text-slate-400 mt-2';e.textContent='📖 '+q[4];c.appendChild(e);
+  box.appendChild(c)});
+})();
+function portCorrigir(){
+ const cards=document.querySelectorAll('#pq .pt-card');let ac=0;const li=[];
+ cards.forEach((c,idx)=>{
+  const n=idx+1,cor=c.dataset.resposta,m=document.querySelector('input[name="pq'+n+'"]:checked');
+  c.querySelector('.pt-exp').classList.remove('hidden');
+  if(m&&m.value===cor){ac++;li.push("<li class='text-emerald-400 font-bold'>Questão "+n+": correta. Resposta: "+cor+".</li>")}
+  else{li.push("<li class='text-rose-400 font-bold'>Questão "+n+": resposta correta "+cor+".</li>")}
+ });
+ const r=document.getElementById('pres');r.classList.remove('hidden');
+ r.innerHTML="<h3 class='font-bold text-yellow-500 text-base'>Seu resultado</h3><p>Você acertou <b>"+ac+" de "+cards.length+"</b> questões.</p><p>Aproveite os comentários exibidos abaixo de cada questão para revisar os assuntos.</p>";
+ document.getElementById('pgab').classList.remove('hidden');
+ document.getElementById('pgl').innerHTML=li.join('');
+ r.scrollIntoView({behavior:'smooth'});
+}
+function portReset(){
+ document.querySelectorAll('#pq input').forEach(i=>i.checked=false);
+ document.getElementById('pres').classList.add('hidden');
+ document.getElementById('pgab').classList.add('hidden');
+ document.querySelectorAll('#pq .pt-exp').forEach(e=>e.classList.add('hidden'));
+}
+
+const CP_TXT=`Homicídio simples
+Art. 121. Matar alguem:
+Pena - reclusão, de seis a vinte anos.
+Caso de diminuição de pena
+§ 1º Se o agente comete o crime impelido por motivo de relevante valor social ou moral, ou sob o domínio de violenta emoção, logo em seguida a injusta provocação da vítima, o juiz pode reduzir a pena de um sexto a um terço.
+Homicídio qualificado
+§ 2° Se o homicídio é cometido:
+I - mediante paga ou promessa de recompensa, ou por outro motivo torpe;
+II - por motivo futil;
+III - com emprego de veneno, fogo, explosivo, asfixia, tortura ou outro meio insidioso ou cruel, ou de que possa resultar perigo comum;
+IV - à traição, de emboscada, ou mediante dissimulação ou outro recurso que dificulte ou torne impossivel a defesa do ofendido;
+V - para assegurar a execução, a ocultação, a impunidade ou vantagem de outro crime:
+Pena - reclusão, de doze a trinta anos.
+Feminicídio       (Incluído pela Lei nº 13.104, de 2015)
+VI - (Revogado pela Lei nº 14.994, de 2024)
+VII – contra:    (Redação dada pela Lei nº 15.134, de 2025)
+a) autoridade ou agente descrito nos arts. 142 e 144 da Constituição Federal, integrantes do sistema prisional e da Força Nacional de Segurança Pública, no exercício da função ou em decorrência dela, ou contra seu cônjuge, companheiro ou parente consanguíneo até o terceiro grau, em razão dessa condição;     (Incluída pela Lei nº 15.134, de 2025)
+b) membro do Poder Judiciário, do Ministério Público, da Defensoria Pública ou da Advocacia Pública, de que tratam os arts. 131 e 132 da Constituição Federal, ou oficial de justiça, no exercício da função ou em decorrência dela, ou contra seu cônjuge, companheiro ou parente, inclusive por afinidade, até o terceiro grau, em razão dessa condição;     (Incluída pela Lei nº 15.134, de 2025)
+VIII - com emprego de arma de fogo de uso restrito ou proibido:         (Incluído pela Lei nº 13.964, de 2019)       (Vigência)
+Homicídio contra menor de 14 (quatorze) anos        (Incluído pela Lei nº 14.344, de 2022)     Vigência
+IX - contra menor de 14 (quatorze) anos:       (Incluído pela Lei nº 14.344, de 2022)     Vigência
+X - nas dependências de instituição de ensino:     (Incluído pela Lei nº 15.159, de 2025)
+Pena - reclusão, de doze a trinta anos.
+§ 2º-B. A pena do homicídio contra menor de 14 (quatorze) anos é aumentada de:      (Incluído pela Lei nº 14.344, de 2022)     Vigência
+I - 1/3 (um terço) até a metade se a vítima é pessoa com deficiência ou com doença que implique o aumento de sua vulnerabilidade;       (Incluído pela Lei nº 14.344, de 2022)     Vigência
+II - 2/3 (dois terços) se o autor é ascendente, padrasto ou madrasta, tio, irmão, cônjuge, companheiro, tutor, curador, preceptor ou empregador da vítima ou por qualquer outro título tiver autoridade sobre ela.     (Incluído pela Lei nº 14.344, de 2022)     Vigência
+III - 2/3 (dois terços) se o crime for praticado em instituição de educação básica pública ou privada.   (Incluído pela Lei nº 14.811, de 2024)
+§ 2º-C. A pena do homicídio cometido nas dependências de instituição de ensino é aumentada de:      (Incluído pela Lei nº 15.159, de 2025)
+I - 1/3 (um terço) até a metade se a vítima é pessoa com deficiência ou com doença que acarrete condição limitante ou de vulnerabilidade física ou mental;     (Incluído pela Lei nº 15.159, de 2025)
+II - 2/3 (dois terços) se o autor é ascendente, padrasto ou madrasta, tio, irmão, cônjuge, companheiro, tutor, curador, preceptor ou empregador da vítima ou por qualquer outro título tem autoridade sobre ela ou, ainda, se é professor ou funcionário da instituição de ensino.    (Incluído pela Lei nº 15.159, de 2025)
+§ 2º-D. Se o homicídio doloso é cometido por integrante de organização criminosa ultraviolenta, grupo paramilitar ou milícia privada, no contexto da atuação ou para a consecução das condutas previstas no art. 2º da lei que institui o marco legal do combate ao crime organizado no Brasil.   (Incluído pela Lei nº 15.358, de 2026)
+Pena - reclusão, de 20 (vinte) a 40 (quarenta anos).     (Incluído pela Lei nº 15.358, de 2026)
+Homicídio culposo
+§ 3º Se o homicídio é culposo: (Vide Lei nº 4.611, de 1965)
+Pena - detenção, de um a três anos.
+Aumento de pena
+§ 4o No homicídio culposo, a pena é aumentada de 1/3 (um terço), se o crime resulta de inobservância de regra técnica de profissão, arte ou ofício, ou se o agente deixa de prestar imediato socorro à vítima, não procura diminuir as conseqüências do seu ato, ou foge para evitar prisão em flagrante. Sendo doloso o homicídio, a pena é aumentada de 1/3 (um terço) se o crime é praticado contra pessoa menor de 14 (quatorze) ou maior de 60 (sessenta) anos. (Redação dada pela Lei nº 10.741, de 2003)
+§ 5º - Na hipótese de homicídio culposo, o juiz poderá deixar de aplicar a pena, se as conseqüências da infração atingirem o próprio agente de forma tão grave que a sanção penal se torne desnecessária. (Incluído pela Lei nº 6.416, de 24.5.1977)
+§ 6o  A pena é aumentada de 1/3 (um terço) até a metade se o crime for praticado por milícia privada, sob o pretexto de prestação de serviço de segurança, ou por grupo de extermínio.       (Incluído pela Lei nº 12.720, de 2012)
+§ 7o   (Revogado pela Lei nº 14.994, de 2024)
+Feminicídio     (Incluído pela Lei nº 14.994, de 2024)
+Art. 121-A. Matar mulher por razões da condição do sexo feminino:      (Incluído pela Lei nº 14.994, de 2024)
+Pena – reclusão, de 20 (vinte) a 40 (quarenta) anos.     (Incluído pela Lei nº 14.994, de 2024)
+§ 1º Considera-se que há razões da condição do sexo feminino quando o crime envolve:     (Incluído pela Lei nº 14.994, de 2024)
+I – violência doméstica e familiar;     (Incluído pela Lei nº 14.994, de 2024)
+II – menosprezo ou discriminação à condição de mulher.     (Incluído pela Lei nº 14.994, de 2024)
+§ 2º A pena do feminicídio é aumentada de 1/3 (um terço) até a metade se o crime é praticado:     (Incluído pela Lei nº 14.994, de 2024)
+I – durante a gestação, nos 3 (três) meses posteriores ao parto ou se a vítima é a mãe ou a responsável por criança, adolescente ou pessoa com deficiência de qualquer idade;     (Incluído pela Lei nº 14.994, de 2024)
+II – contra pessoa menor de 14 (catorze) anos, maior de 60 (sessenta) anos, com deficiência ou portadora de doenças degenerativas que acarretem condição limitante ou de vulnerabilidade física ou mental;     (Incluído pela Lei nº 14.994, de 2024)
+III – na presença física ou virtual de descendente ou de ascendente da vítima;     (Incluído pela Lei nº 14.994, de 2024)
+IV – em descumprimento das medidas protetivas de urgência previstas nos incisos I, II e III do caput do art. 22 da Lei nº 11.340, de 7 de agosto de 2006 (Lei Maria da Penha);     (Incluído pela Lei nº 14.994, de 2024)
+V – nas circunstâncias previstas nos incisos III, IV e VIII do § 2º do  art. 121 deste Código.       (Incluído pela Lei nº 14.994, de 2024)
+Coautoria      (Incluído pela Lei nº 14.994, de 2024)
+§ 3º Comunicam-se ao coautor ou partícipe as circunstâncias pessoais elementares do crime previstas no § 1º deste artigo.      (Incluído pela Lei nº 14.994, de 2024)
+Vicaricídio     (Incluído pela Lei nº 15.384, de 2026)
+Art. 121-B. Matar descendente, ascendente, dependente, enteado ou pessoa sob guarda ou responsabilidade direta da mulher, com o fim específico de causar-lhe sofrimento, punição ou controle, no contexto de violência doméstica e familiar.   (Incluído pela Lei nº 15.384, de 2026)
+Pena – reclusão, de 20 (vinte) a 40 (quarenta) anos.   (Incluído pela Lei nº 15.384, de 2026)
+Parágrafo único. A pena do vicaricídio é aumentada de 1/3 (um terço) até a metade se o crime for praticado:   (Incluído pela Lei nº 15.384, de 2026)
+I – na presença da mulher a quem se pretende causar sofrimento, punição ou controle;   (Incluído pela Lei nº 15.384, de 2026)
+II – contra criança ou adolescente ou pessoa idosa ou com deficiência;    (Incluído pela Lei nº 15.384, de 2026)
+III – em descumprimento de medida protetiva de urgência.   (Incluído pela Lei nº 15.384, de 2026)
+Induzimento, instigação ou auxílio a suicídio ou a automutilação           (Redação dada pela Lei nº 13.968, de 2019)
+Art. 122. Induzir ou instigar alguém a suicidar-se ou a praticar automutilação ou prestar-lhe auxílio material para que o faça:   (Redação dada pela Lei nº 13.968, de 2019)
+Pena - reclusão, de 6 (seis) meses a 2 (dois) anos.   (Redação dada pela Lei nº 13.968, de 2019)
+§ 1º Se da automutilação ou da tentativa de suicídio resulta lesão corporal de natureza grave ou gravíssima, nos termos dos §§ 1º e 2º do art. 129 deste Código:   (Incluído pela Lei nº 13.968, de 2019)
+Pena - reclusão, de 1 (um) a 3 (três) anos.   (Incluído pela Lei nº 13.968, de 2019)
+§ 2º Se o suicídio se consuma ou se da automutilação resulta morte:    (Incluído pela Lei nº 13.968, de 2019)
+Pena - reclusão, de 2 (dois) a 6 (seis) anos.   (Incluído pela Lei nº 13.968, de 2019)
+§ 3º A pena é duplicada:   (Incluído pela Lei nº 13.968, de 2019)
+I - se o crime é praticado por motivo egoístico, torpe ou fútil;   (Incluído pela Lei nº 13.968, de 2019)
+II - se a vítima é menor ou tem diminuída, por qualquer causa, a capacidade de resistência.   (Incluído pela Lei nº 13.968, de 2019)
+§ 4º A pena é aumentada até o dobro se a conduta é realizada por meio da rede de computadores, de rede social ou transmitida em tempo real.   (Incluído pela Lei nº 13.968, de 2019)
+§ 5º Aplica-se a pena em dobro se o autor é líder, coordenador ou administrador de grupo, de comunidade ou de rede virtual, ou por estes é responsável.   (Redação dada pela Lei nº 14.811, de 2024)
+§ 6º Se o crime de que trata o § 1º deste artigo resulta em lesão corporal de natureza gravíssima e é cometido contra menor de 14 (quatorze) anos ou contra quem, por enfermidade ou deficiência mental, não tem o necessário discernimento para a prática do ato, ou que, por qualquer outra causa, não pode oferecer resistência, responde o agente pelo crime descrito no § 2º do art. 129 deste Código.   (Incluído pela Lei nº 13.968, de 2019)
+§ 7º Se o crime de que trata o § 2º deste artigo é cometido contra menor de 14 (quatorze) anos ou contra quem não tem o necessário discernimento para a prática do ato, ou que, por qualquer outra causa, não pode oferecer resistência, responde o agente pelo crime de homicídio, nos termos do art. 121 deste Código.   (Incluído pela Lei nº 13.968, de 2019)
+Infanticídio
+Art. 123 - Matar, sob a influência do estado puerperal, o próprio filho, durante o parto ou logo após:
+Pena - detenção, de dois a seis anos.
+Aborto provocado pela gestante ou com seu consentimento
+Art. 124 - Provocar aborto em si mesma ou consentir que outrem lho provoque:  (Vide ADPF 54)
+Pena - detenção, de um a três anos.
+Aborto provocado por terceiro
+Art. 125 - Provocar aborto, sem o consentimento da gestante:
+Pena - reclusão, de três a dez anos.
+Art. 126 - Provocar aborto com o consentimento da gestante:   (Vide ADPF 54)
+Pena - reclusão, de um a quatro anos.
+Parágrafo único. Aplica-se a pena do artigo anterior, se a gestante não é maior de quatorze anos, ou é alienada ou debil mental, ou se o consentimento é obtido mediante fraude, grave ameaça ou violência
+Forma qualificada
+Art. 127 - As penas cominadas nos dois artigos anteriores são aumentadas de um terço, se, em conseqüência do aborto ou dos meios empregados para provocá-lo, a gestante sofre lesão corporal de natureza grave; e são duplicadas, se, por qualquer dessas      causas, lhe sobrevém a morte.
+Art. 128 - Não se pune o aborto praticado por médico:   (Vide ADPF 54)    (Vide ADPF 1207 MC/DF)
+Aborto necessário
+I - se não há outro meio de salvar a vida da gestante;
+Aborto no caso de gravidez resultante de estupro
+II - se a gravidez resulta de estupro e o aborto é precedido de consentimento da gestante ou, quando incapaz, de seu representante legal.`;
+(function(){
+ const box=document.getElementById('cpt');
+ CP_TXT.split('\n').forEach(l=>{
+  const p=document.createElement('p');p.className='leading-relaxed';
+  const t=l.replace(/\s{2,}/g,' ').trim();
+  if(/^Art\./.test(t)){p.className='leading-relaxed pt-3';const m=t.match(/^(Art\.\s*[\d\-A-Z]+[º°]?\.?)(.*)$/);
+   const b=document.createElement('b');b.className='text-yellow-400';b.textContent=m?m[1]:'';p.append(b,document.createTextNode(m?m[2]:t))}
+  else if(/^Pena/.test(t)){p.className='leading-relaxed font-semibold text-amber-400';p.textContent=t}
+  else if(!/^(§|[IVX]+\s*[-–]|[a-z]\)|Parágrafo)/.test(t)&&!/[:;.,]$/.test(t)&&t.length<110){p.className='font-bold text-blue-400 pt-3';p.textContent=t}
+  else{p.className='leading-relaxed pl-3';p.textContent=t}
+  box.appendChild(p)});
+})();
 </script>
 </body>
 </html>
