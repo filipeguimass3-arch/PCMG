@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Desafio PCMG - Jogo Didático da Lei Complementar</title>
+<title>PROJETO PCMG - PAU NA MAQUINA</title>
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <style>@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap');
 body{background:#07080a repeating-linear-gradient(135deg,#0b0c0f 0 14px,#08090b 14px 28px)!important}
@@ -26,7 +26,7 @@ body{font-family:'Inter',system-ui,sans-serif;padding-top:env(safe-area-inset-to
 <header class="bg-slate-900 border-b border-slate-800 py-4 px-6 sticky top-0 z-50">
  <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
   <div class="flex items-center gap-3"><div class="bg-blue-600 p-2.5 rounded-xl text-xl">🛡️</div>
-   <div><h1 class="text-xl font-bold">Polícia Civil MG · Desafio</h1><p class="text-xs text-slate-400">Jogo de fixação da Lei Orgânica (arts. 1º a 106)</p></div></div>
+   <div><h1 class="text-xl font-bold">Polícia Civil MG · </h1><p class="text-xs text-slate-400"> Tudo Bizurado - @filipeguimaraes1_ (arts. 1º a 106)</p></div></div>
   <div class="flex items-center gap-4 bg-slate-950 px-4 py-2 rounded-xl border border-slate-800 text-sm">
    <div>Questão <b id="cq" class="text-blue-400">0</b>/<span id="tq">0</span></div><div class="h-4 w-px bg-slate-800"></div>
    <div>Pontos <b id="score" class="text-emerald-400">0</b></div><div class="h-4 w-px bg-slate-800"></div>
@@ -763,7 +763,7 @@ function tbl(h,r){return '<div class="overflow-x-auto"><table class="w-full text
 $('prazos').innerHTML='<h2 class="text-2xl font-bold">⏱️ Prazos e números</h2><p class="text-xs text-slate-400">Cobrança estimada: ★★★ muito provável, ★ menos provável.</p>'+tbl(['Assunto','Prazo ou valor','Art.','Cobrança'],PZ.map(r=>[r[0],'<b class="text-yellow-400">'+r[1]+'</b>',r[2],'★'.repeat(r[3])]));
 $('resp').innerHTML='<h2 class="text-2xl font-bold">👮 Responsabilidades</h2><p class="text-xs text-slate-400">Quem faz o que: a base das questões de competência.</p>'+tbl(['Quem','Responsabilidade','Art.'],RS);
 $('inc').innerHTML='<h2 class="text-2xl font-bold">📊 Mais cobrados em concurso</h2><p class="text-xs text-slate-400">Estimativa baseada no padrão de cobrança de leis orgânicas (literalidade, números e competências). Não é estatística oficial de banca: confira sempre o edital.</p>'+IN.map((r,i)=>'<div class="space-y-1"><div class="flex justify-between text-sm"><b>'+(i+1)+'. '+r[0]+'</b><span class="text-yellow-400">'+'★'.repeat(r[1])+'</span></div><div class="h-2 bg-slate-800 rounded"><div class="h-2 bg-yellow-500 rounded" style="width:'+r[1]*20+'%"></div></div><div class="text-xs text-slate-400">'+r[2]+'</div></div>').join('');
-$('tlist').innerHTML='<h2 class="text-2xl font-bold">📚 Teoria da Lei</h2><p class="text-sm text-slate-300">Estude cada pasta antes das questões: os arts. 1º a 106 estão organizados em 9 temas.</p><div id="tl" class="grid sm:grid-cols-2 gap-3"></div>';
+$('tlist').innerHTML='<h2 class="text-2xl font-bold">📚 Lei Organica PCMG</h2><p class="text-sm text-slate-300">Estude cada pasta antes das questões: os arts. 1º a 106 estão organizados em 9 temas.</p><div id="tl" class="grid sm:grid-cols-2 gap-3"></div>';
 P.forEach((n,k)=>{const b=document.createElement('button');b.className='p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-blue-500/60 text-left';b.innerHTML='<div class="font-semibold text-sm">📁 Pasta '+(k+1)+'</div><div class="text-xs text-slate-400 mt-1">'+n+'</div>';b.onclick=()=>openTheory(k);$('tl').appendChild(b)});
 [['tlist','📚 Teoria'],['menu','🎯 Questões'],['prazos','⏱️ Prazos'],['resp','👮 Responsabilidades'],['inc','📊 Mais cobrados'],['port','🇧🇷 Português'],['cp','⚖️ Cód. Penal'],['sex','🚨 Dignidade Sexual'],['adm','🏛️ Administração Pública'],['patrimonio','💰 Crimes contra o Patrimônio']].forEach(([id,t])=>{const b=document.createElement('button');b.dataset.id=id;b.textContent=t;b.onclick=()=>id==='menu'?toMenu():show(id);$('tabs').appendChild(b)});
 buildMenu();show('tlist');
