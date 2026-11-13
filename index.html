@@ -87,6 +87,444 @@ body{font-family:'Inter',system-ui,sans-serif;padding-top:env(safe-area-inset-to
   <button id="retry" onclick="retryErr()" class="hidden px-6 py-3 bg-amber-600 hover:bg-amber-500 rounded-xl font-semibold">Refazer erros</button>
   <button onclick="toMenu()" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold">Menu de fases</button></div>
 </div>
+
+<div id="sex" class="hidden p-6 sm:p-8 space-y-5">
+ <div class="space-y-2">
+  <div class="text-xs font-semibold uppercase tracking-widest text-blue-400">📚 Direito Penal · Teoria + revisão + simulado</div>
+  <h2 class="text-2xl font-bold">⚖️ Crimes contra a dignidade sexual</h2>
+  <p class="text-sm text-slate-300">Código Penal, arts. 213 a 218-C. Material de revisão para concursos policiais, com explicações, exemplos, diferenças entre os tipos penais, penas, pegadinhas e 10 questões.</p>
+  <div class="rounded-lg border border-yellow-900/50 bg-slate-950 p-4 text-sm"><b class="text-yellow-400">X da questão:</b> a prova costuma confundir violência ou grave ameaça, fraude, ato libidinoso sem anuência, abuso de relação hierárquica, vulnerabilidade e divulgação de conteúdo íntimo. Identifique primeiro o meio de execução e a condição da vítima.</div>
+ </div>
+ <div class="flex flex-wrap gap-2">
+  <button type="button" onclick="sexShow('sexTheory')" class="px-4 py-2 bg-blue-600 rounded-md font-bold">📖 Teoria completa</button>
+  <button type="button" onclick="sexShow('sexTable')" class="px-4 py-2 bg-slate-800 rounded-md">🧠 Quadro-resumo</button>
+  <button type="button" onclick="sexShow('sexQuiz')" class="px-4 py-2 bg-slate-800 rounded-md">🎯 10 questões</button>
+ </div>
+ <div id="sexTheory" class="space-y-5 text-sm text-slate-300">
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">1. Estupro — art. 213</h3>
+   <p><b>Conduta:</b> constranger alguém, mediante violência ou grave ameaça, a ter conjunção carnal ou a praticar ou permitir que com ele se pratique outro ato libidinoso.</p>
+   <p><b>Pena:</b> reclusão, de 6 a 10 anos.</p>
+   <p><b>Forma qualificada (§ 1º):</b> reclusão, de 8 a 12 anos, se resulta lesão corporal de natureza grave ou se a vítima é maior de 14 e menor de 18 anos.</p>
+   <p><b>Resultado morte (§ 2º):</b> reclusão, de 12 a 30 anos.</p>
+   <p><b>Exemplo:</b> mediante ameaça séria, o agente obriga a vítima a praticar ato libidinoso. Não é necessário que haja conjunção carnal: outros atos libidinosos também integram o tipo.</p>
+   <p><b>Pegadinha:</b> o crime pode ter vítima de qualquer sexo. Violência ou grave ameaça é o meio de constrangimento; sem esses elementos, analise outros tipos penais, como importunação sexual ou violação sexual mediante fraude.</p>
+  </div>
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">2. Violação sexual mediante fraude — art. 215</h3>
+   <p><b>Conduta:</b> ter conjunção carnal ou praticar outro ato libidinoso com alguém mediante fraude ou outro meio que impeça ou dificulte a livre manifestação de vontade da vítima.</p>
+   <p><b>Pena:</b> reclusão, de 2 a 6 anos. Se houver finalidade de obter vantagem econômica, aplica-se também multa.</p>
+   <p><b>Exemplo:</b> o agente usa uma fraude relevante para obter um ato sexual que a vítima não teria consentido se conhecesse a realidade.</p>
+   <p><b>Pegadinha:</b> aqui o núcleo é a fraude ou meio equivalente que compromete a manifestação livre da vontade; no art. 213, o constrangimento ocorre mediante violência ou grave ameaça.</p>
+  </div>
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">3. Importunação sexual — art. 215-A</h3>
+   <p><b>Conduta:</b> praticar contra alguém e sem sua anuência ato libidinoso com o objetivo de satisfazer a própria lascívia ou a de terceiro, se o ato não constitui crime mais grave.</p>
+   <p><b>Pena:</b> reclusão, de 1 a 5 anos, se o ato não constitui crime mais grave.</p>
+   <p><b>Exemplo:</b> tocar lascivamente outra pessoa, sem consentimento, em transporte público, sem violência ou grave ameaça que caracterize estupro.</p>
+   <p><b>Pegadinha:</b> não confunda com estupro. A importunação exige ato libidinoso sem anuência e tem caráter subsidiário expresso: cede quando a conduta configurar crime mais grave.</p>
+  </div>
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">4. Assédio sexual — art. 216-A</h3>
+   <p><b>Conduta:</b> constranger alguém com o intuito de obter vantagem ou favorecimento sexual, prevalecendo-se o agente de sua condição de superior hierárquico ou ascendência inerentes ao exercício de emprego, cargo ou função.</p>
+   <p><b>Pena:</b> detenção, de 1 a 2 anos. A pena é aumentada em até um terço se a vítima é menor de 18 anos.</p>
+   <p><b>Exemplo:</b> chefe que condiciona benefício profissional à aceitação de proposta sexual.</p>
+   <p><b>Pegadinha:</b> é indispensável a relação de superioridade/ascendência ligada ao emprego, cargo ou função. Uma proposta inconveniente entre colegas sem essa relação não preenche automaticamente o art. 216-A.</p>
+  </div>
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">5. Registro não autorizado da intimidade sexual — art. 216-B</h3>
+   <p><b>Conduta:</b> produzir, fotografar, filmar ou registrar, por qualquer meio, conteúdo com cena de nudez ou ato sexual ou libidinoso de caráter íntimo e privado, sem autorização dos participantes.</p>
+   <p><b>Pena:</b> detenção, de 6 meses a 1 ano, e multa.</p>
+   <p><b>Parágrafo único:</b> também alcança quem realiza montagem em fotografia, vídeo, áudio ou outro registro para incluir pessoa em cena de nudez ou ato sexual/libidinoso de caráter íntimo.</p>
+   <p><b>Pegadinha:</b> o foco é o registro não autorizado ou a montagem. Não é necessário que o conteúdo seja posteriormente divulgado para que se configure o art. 216-B.</p>
+  </div>
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">6. Estupro de vulnerável — art. 217-A</h3>
+   <p><b>Conduta:</b> ter conjunção carnal ou praticar outro ato libidinoso com menor de 14 anos. O artigo também alcança quem pratica o ato com pessoa que, por enfermidade ou deficiência mental, não tem o necessário discernimento, ou que, por qualquer outra causa, não pode oferecer resistência.</p>
+   <p><b>Pena do caput:</b> reclusão, de 10 a 18 anos, e multa.</p>
+   <p><b>Lesão grave (§ 3º):</b> reclusão, de 12 a 24 anos, e multa. <b>Resultado morte (§ 4º):</b> reclusão, de 20 a 40 anos, e multa.</p>
+   <p><b>Regra expressa de vulnerabilidade:</b> o § 4º-A estabelece a presunção absoluta de vulnerabilidade, não podendo ser relativizada. O § 5º determina a aplicação das penas independentemente do consentimento da vítima, de sua experiência sexual ou da existência de relacionamento sexual anterior, bem como de gravidez resultante do crime.</p>
+   <p><b>Pegadinha:</b> menor de 14 anos é vulnerável para esse tipo penal. Consentimento, namoro, experiência sexual anterior ou gravidez não afastam a incidência do art. 217-A.</p>
+  </div>
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">7. Corrupção de menores — art. 218</h3>
+   <p><b>Conduta:</b> induzir alguém menor de 14 anos a satisfazer a lascívia de outra pessoa.</p>
+   <p><b>Pena:</b> reclusão, de 6 a 14 anos, e multa.</p>
+   <p><b>Pegadinha:</b> atenção ao verbo induzir e à finalidade de satisfazer a lascívia de terceiro. Não confunda com o art. 218-A, que trata de praticar ato sexual na presença do menor ou fazê-lo presenciar o ato.</p>
+  </div>
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">8. Satisfação de lascívia mediante presença de criança ou adolescente — art. 218-A</h3>
+   <p><b>Conduta:</b> praticar, na presença de menor de 14 anos, ou induzi-lo a presenciar, conjunção carnal ou outro ato libidinoso, para satisfazer lascívia própria ou de terceiro.</p>
+   <p><b>Pena:</b> reclusão, de 5 a 12 anos, e multa.</p>
+   <p><b>Pegadinha:</b> o menor presencia o ato; não é necessário que participe fisicamente dele. A finalidade específica é satisfazer a lascívia própria ou de terceiro.</p>
+  </div>
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">9. Favorecimento da prostituição ou de outra forma de exploração sexual de criança ou adolescente ou de vulnerável — art. 218-B</h3>
+   <p><b>Condutas:</b> submeter, induzir ou atrair à prostituição ou outra forma de exploração sexual menor de 18 anos ou pessoa que, por enfermidade ou deficiência mental, não tem o necessário discernimento; facilitar a prática; ou dificultar/impedir que a abandone.</p>
+   <p><b>Pena:</b> reclusão, de 7 a 16 anos, e multa.</p>
+   <p><b>Atenção:</b> a redação atual deve ser consultada especialmente quanto aos parágrafos e às consequências para quem pratica conjunção carnal ou outro ato libidinoso com pessoa explorada. O § 1º foi revogado pela Lei 15.280/2025.</p>
+   <p><b>Pegadinha:</b> não se limita a quem mantém a exploração diretamente. A lei também alcança condutas de induzir, atrair, facilitar e impedir/dificultar o abandono da exploração.</p>
+  </div>
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">10. Divulgação de cena de estupro ou de cena de sexo, nudez ou pornografia — art. 218-C</h3>
+   <p><b>Conduta:</b> oferecer, trocar, disponibilizar, transmitir, vender, expor à venda, distribuir, publicar ou divulgar, por qualquer meio, fotografia, vídeo ou outro registro audiovisual que contenha cena de estupro ou estupro de vulnerável, ou que faça apologia/induza à sua prática, ou, sem consentimento da vítima, cena de sexo, nudez ou pornografia.</p>
+   <p><b>Pena:</b> reclusão, de 4 a 10 anos, e multa, se o fato não constitui crime mais grave.</p>
+   <p><b>Aumento (§ 1º):</b> aumento de 1/3 a 2/3 se o agente mantém ou manteve relação íntima de afeto com a vítima ou se pratica o crime com finalidade de vingança ou humilhação.</p>
+   <p><b>Pegadinha:</b> o compartilhamento também é conduta típica; não é necessário que o agente tenha produzido o material. O consentimento para a gravação não significa autorização para divulgação.</p>
+  </div>
+  <div class="rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-2">
+   <h3 class="font-bold text-yellow-400">Campeões de prova — diferenças rápidas</h3>
+   <ul class="list-disc pl-5 space-y-1">
+    <li><b>Art. 213:</b> violência ou grave ameaça.</li>
+    <li><b>Art. 215:</b> fraude ou meio que comprometa a livre manifestação da vontade.</li>
+    <li><b>Art. 215-A:</b> ato libidinoso sem anuência, sem crime mais grave.</li>
+    <li><b>Art. 216-A:</b> constrangimento para obter vantagem sexual com abuso de superioridade/ascendência funcional.</li>
+    <li><b>Art. 216-B:</b> registro íntimo sem autorização ou montagem.</li>
+    <li><b>Art. 217-A:</b> ato sexual com menor de 14 anos ou outra pessoa legalmente vulnerável.</li>
+    <li><b>Art. 218:</b> induzir menor de 14 a satisfazer a lascívia de terceiro.</li>
+    <li><b>Art. 218-A:</b> ato sexual na presença do menor ou fazê-lo presenciar.</li>
+    <li><b>Art. 218-B:</b> exploração sexual de menor de 18 ou vulnerável.</li>
+    <li><b>Art. 218-C:</b> divulgação/compartilhamento de cena criminosa ou íntima sem consentimento.</li>
+   </ul>
+  </div>
+  <p class="text-xs text-slate-400">Atualização legislativa considerada nesta revisão: Lei 15.280/2025 (alterações de penas em crimes sexuais) e Lei 15.353/2026 (regras expressas sobre vulnerabilidade no art. 217-A). Para prova, confira o texto legal consolidado na data do edital.</p>
+ </div>
+ <div id="sexTable" class="hidden space-y-3">
+  <h3 class="text-lg font-bold text-yellow-400">Quadro-resumo das penas</h3>
+  <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="text-left text-yellow-400 border-b border-yellow-900"><th class="p-2">Artigo</th><th class="p-2">Crime</th><th class="p-2">Pena principal</th></tr></thead><tbody>
+   <tr class="border-b border-slate-800"><td class="p-2">213</td><td class="p-2">Estupro</td><td class="p-2">6 a 10 anos</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">215</td><td class="p-2">Violação sexual mediante fraude</td><td class="p-2">2 a 6 anos</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">215-A</td><td class="p-2">Importunação sexual</td><td class="p-2">1 a 5 anos</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">216-A</td><td class="p-2">Assédio sexual</td><td class="p-2">Detenção de 1 a 2 anos</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">216-B</td><td class="p-2">Registro não autorizado</td><td class="p-2">Detenção de 6 meses a 1 ano e multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">217-A</td><td class="p-2">Estupro de vulnerável</td><td class="p-2">10 a 18 anos e multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">218</td><td class="p-2">Corrupção de menores</td><td class="p-2">6 a 14 anos e multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">218-A</td><td class="p-2">Presença de menor</td><td class="p-2">5 a 12 anos e multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">218-B</td><td class="p-2">Exploração sexual</td><td class="p-2">7 a 16 anos e multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">218-C</td><td class="p-2">Divulgação de cena</td><td class="p-2">4 a 10 anos e multa</td></tr>
+  </tbody></table></div>
+  <p class="text-xs text-slate-400">As penas da tabela são as formas principais; qualificadoras, resultados e causas de aumento podem alterar a sanção.</p>
+ </div>
+ <div id="sexQuiz" class="hidden space-y-4">
+  <h3 class="text-lg font-bold text-yellow-400">🎯 Simulado — 10 questões</h3>
+  <p class="text-xs text-slate-400">Marque uma alternativa em cada questão e clique em corrigir. O gabarito comentado aparece ao final.</p>
+  <div id="sexQuestions" class="space-y-5"></div>
+  <div class="flex gap-3 flex-wrap"><button type="button" onclick="sexGrade()" class="px-5 py-3 bg-blue-600 rounded-md font-bold">Corrigir respostas</button><button type="button" onclick="sexReset()" class="px-5 py-3 bg-slate-800 rounded-md">Limpar respostas</button></div>
+  <div id="sexResult" class="hidden rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-3"></div>
+ </div>
+</div>
+
+
+<!-- ===== NOVO: Crimes contra a Administração Pública (arts. 312 a 359) ===== -->
+<div id="adm" class="hidden p-6 sm:p-8 space-y-5">
+ <div class="space-y-2">
+  <div class="text-xs font-semibold uppercase tracking-widest text-blue-400">📚 Direito Penal · Teoria + revisão + simulado</div>
+  <h2 class="text-2xl font-bold">🏛️ Crimes contra a Administração Pública</h2>
+  <p class="text-sm text-slate-300">Código Penal, arts. 312 a 359 e artigos com letras inseridos nesse intervalo. Material para concursos policiais: conceitos, exemplos, penas, diferenças e 10 questões.</p>
+  <div class="rounded-lg border border-yellow-900/50 bg-slate-950 p-4 text-sm"><b class="text-yellow-400">X da questão:</b> primeiro identifique quem pratica o crime (funcionário público ou particular), contra quem/qual bem jurídico, e qual é o verbo do tipo. Peculato, concussão, corrupção passiva, corrupção ativa e prevaricação são campeões de confusão.</div>
+ </div>
+ <div class="flex flex-wrap gap-2">
+  <button type="button" onclick="admShow('admTheory')" class="px-4 py-2 bg-blue-600 rounded-md font-bold">📖 Teoria completa</button>
+  <button type="button" onclick="admShow('admTable')" class="px-4 py-2 bg-slate-800 rounded-md">🧠 Quadro-resumo</button>
+  <button type="button" onclick="admShow('admQuiz')" class="px-4 py-2 bg-slate-800 rounded-md">🎯 10 questões</button>
+ </div>
+ <div id="admTheory" class="space-y-5 text-sm text-slate-300">
+  <div class="rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">Antes de começar: quem é funcionário público? — art. 327</h3>
+   <p>Para fins penais, considera-se funcionário público quem, embora transitoriamente ou sem remuneração, exerce cargo, emprego ou função pública.</p>
+   <p><b>Equiparação (§ 1º):</b> também se considera funcionário público quem exerce cargo, emprego ou função em entidade paraestatal e quem trabalha para empresa prestadora de serviço contratada ou conveniada para executar atividade típica da Administração Pública.</p>
+   <p><b>Aumento (§ 2º):</b> a pena aumenta em 1/3 quando os autores dos crimes do capítulo I ocupam cargo em comissão ou função de direção ou assessoramento em órgão da administração direta, sociedade de economia mista, empresa pública ou fundação instituída pelo poder público.</p>
+   <p><b>Exemplo:</b> pessoa contratada para executar atividade pública típica pode ser equiparada a funcionário público para fins penais, mesmo sem ser servidora efetiva.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO I — Crimes praticados por funcionário público contra a Administração (arts. 312 a 327)</h3>
+   <p><b>Art. 312 — Peculato:</b> funcionário se apropria ou desvia dinheiro/bem móvel de que tem posse em razão do cargo, em proveito próprio ou alheio. Pena: reclusão de 2 a 12 anos e multa. <b>Peculato-furto (§ 1º):</b> não tem a posse, mas subtrai ou concorre para subtração usando facilidade do cargo. <b>Peculato culposo (§ 2º):</b> concorre por culpa para crime de outra pessoa; detenção de 3 meses a 1 ano. Reparação do dano antes da sentença irrecorrível extingue a punibilidade; depois, reduz a pena pela metade (§ 3º).</p>
+   <p><b>Art. 313 — Peculato mediante erro de outrem:</b> apropriar-se de dinheiro/utilidade que recebeu por erro de outra pessoa no exercício do cargo. Pena: reclusão de 1 a 4 anos e multa. O erro é da vítima, não uma fraude praticada pelo agente.</p>
+   <p><b>Art. 313-A — Inserção de dados falsos:</b> funcionário autorizado insere/facilita inserção de dados falsos, ou altera/exclui dados corretos em sistema informatizado ou banco de dados da Administração, com fim de obter vantagem indevida ou causar dano. Pena: reclusão de 2 a 12 anos e multa.</p>
+   <p><b>Art. 313-B — Modificação ou alteração não autorizada de sistema:</b> modificar/alterar sistema de informações ou programa de informática sem autorização ou solicitação da autoridade competente. Pena: detenção de 3 meses a 2 anos e multa; se resulta dano à Administração ou ao administrado, aumenta-se de 1/3 até a metade.</p>
+   <p><b>Art. 314 — Extravio, sonegação ou inutilização de livro/documento:</b> extraviar, sonegar ou inutilizar livro oficial ou documento de que tem guarda em razão do cargo. Pena: reclusão de 1 a 4 anos, se o fato não constitui crime mais grave.</p>
+   <p><b>Art. 315 — Emprego irregular de verbas/rendas públicas:</b> dar às verbas ou rendas públicas aplicação diversa da estabelecida em lei. Pena: detenção de 1 a 3 meses ou multa.</p>
+   <p><b>Art. 316 — Concussão:</b> exigir, para si ou para terceiro, vantagem indevida, ainda que fora da função ou antes de assumi-la, mas em razão dela. Pena: reclusão de 2 a 12 anos e multa. <b>Excesso de exação (§ 1º):</b> exigir tributo/contribuição social que sabe ou deveria saber indevido, ou, quando devido, empregar meio vexatório ou gravoso não autorizado; reclusão de 3 a 8 anos e multa. Se desvia o que recebeu indevidamente em proveito próprio/alheio, reclusão de 2 a 12 anos e multa (§ 2º).</p>
+   <p><b>Art. 317 — Corrupção passiva:</b> solicitar ou receber vantagem indevida, ou aceitar promessa, em razão da função, mesmo antes de assumi-la ou fora dela. Pena: reclusão de 2 a 12 anos e multa. Aumento de 1/3 se, em consequência da vantagem/promessa, retarda ou deixa de praticar ato de ofício ou o pratica infringindo dever funcional (§ 1º). Se cede a pedido/influência de outrem, praticando, deixando de praticar ou retardando ato de ofício, detenção de 3 meses a 1 ano ou multa (§ 2º).</p>
+   <p><b>Art. 318 — Facilitação de contrabando ou descaminho:</b> facilitar, com infração de dever funcional, a prática desses crimes. Pena: reclusão de 3 a 8 anos e multa.</p>
+   <p><b>Art. 319 — Prevaricação:</b> retardar ou deixar de praticar indevidamente ato de ofício, ou praticá-lo contra disposição expressa de lei, para satisfazer interesse ou sentimento pessoal. Pena: detenção de 3 meses a 1 ano e multa. <b>Art. 319-A:</b> diretor de penitenciária/agente público deixa de cumprir dever de vedar acesso de preso a aparelho telefônico, rádio ou similar; detenção de 3 meses a 1 ano.</p>
+   <p><b>Art. 320 — Condescendência criminosa:</b> por indulgência, deixar de responsabilizar subordinado que cometeu infração no exercício do cargo ou, se não tiver competência, deixar de levar o fato à autoridade competente. Pena: detenção de 15 dias a 1 mês ou multa.</p>
+   <p><b>Art. 321 — Advocacia administrativa:</b> patrocinar, direta ou indiretamente, interesse privado perante a Administração, valendo-se da qualidade de funcionário. Pena: detenção de 1 a 3 meses ou multa; se o interesse é ilegítimo, detenção de 3 meses a 1 ano e multa.</p>
+   <p><b>Art. 322:</b> violência arbitrária — artigo revogado.</p>
+   <p><b>Art. 323 — Abandono de função:</b> abandonar cargo público fora dos casos permitidos em lei. Pena: detenção de 15 dias a 1 mês ou multa. Se resulta prejuízo público, detenção de 3 meses a 1 ano e multa; se ocorre em faixa de fronteira, detenção de 1 a 3 anos e multa.</p>
+   <p><b>Art. 324 — Exercício funcional ilegalmente antecipado ou prolongado:</b> entrar no exercício antes de satisfeitas as exigências legais ou continuar a exercê-lo sem autorização depois de saber oficialmente que foi exonerado, removido, substituído ou suspenso. Pena: detenção de 15 dias a 1 mês ou multa.</p>
+   <p><b>Art. 325 — Violação de sigilo funcional:</b> revelar fato de que tem ciência em razão do cargo e que deva permanecer em segredo, ou facilitar a revelação. Pena: detenção de 6 meses a 2 anos ou multa, se não houver crime mais grave. Também alcança quem permite/facilita acesso não autorizado a sistemas ou bancos de dados e quem usa indevidamente acesso restrito. Se resulta dano à Administração ou a terceiro, reclusão de 2 a 6 anos e multa.</p>
+   <p><b>Art. 326 — Violação do sigilo de proposta de concorrência:</b> devassar o sigilo de proposta de concorrência pública ou proporcionar a terceiro o ensejo de devassá-lo. Pena: detenção de 3 meses a 1 ano e multa.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO II — Crimes praticados por particular contra a Administração (arts. 328 a 337-A)</h3>
+   <p><b>Art. 328 — Usurpação de função pública:</b> usurpar o exercício de função pública. Pena: detenção de 3 meses a 2 anos e multa. Se aufere vantagem, reclusão de 2 a 5 anos e multa.</p>
+   <p><b>Art. 329 — Resistência:</b> opor-se à execução de ato legal, mediante violência ou ameaça a funcionário competente ou a quem o auxilia. Pena: detenção de 2 meses a 2 anos. Se o ato não se executa por causa da resistência, reclusão de 1 a 3 anos; as penas da violência também são aplicáveis.</p>
+   <p><b>Art. 330 — Desobediência:</b> desobedecer a ordem legal de funcionário público. Pena: detenção de 15 dias a 6 meses e multa.</p>
+   <p><b>Art. 331 — Desacato:</b> desacatar funcionário público no exercício da função ou em razão dela. Pena: detenção de 6 meses a 2 anos ou multa.</p>
+   <p><b>Art. 332 — Tráfico de influência:</b> solicitar, exigir, cobrar ou obter vantagem ou promessa, a pretexto de influir em ato praticado por funcionário público. Pena: reclusão de 2 a 5 anos e multa; aumenta-se pela metade se o agente alega ou insinua que a vantagem também se destina ao funcionário.</p>
+   <p><b>Art. 333 — Corrupção ativa:</b> oferecer ou prometer vantagem indevida a funcionário público para determiná-lo a praticar, omitir ou retardar ato de ofício. Pena: reclusão de 2 a 12 anos e multa; aumenta-se em 1/3 se, em razão da vantagem, o funcionário retarda/omite ato ou o pratica infringindo dever funcional.</p>
+   <p><b>Art. 334 — Descaminho:</b> iludir, no todo ou em parte, o pagamento de direito ou imposto devido pela entrada, saída ou consumo de mercadoria. Pena: reclusão de 1 a 4 anos. Há formas equiparadas e aumento conforme o modo de execução, nos termos do artigo.</p>
+   <p><b>Art. 334-A — Contrabando:</b> importar ou exportar mercadoria proibida. Pena: reclusão de 2 a 5 anos. Há condutas equiparadas e aumento de pena quando praticado por transporte aéreo, marítimo ou fluvial, conforme a lei.</p>
+   <p><b>Art. 335:</b> impedimento, perturbação ou fraude de concorrência — revogado.</p>
+   <p><b>Art. 336 — Inutilização de edital ou de sinal:</b> rasgar/inutilizar edital afixado por ordem de funcionário público; violar ou inutilizar selo/sinal empregado por determinação legal ou ordem de funcionário. Pena: detenção de 1 mês a 1 ano ou multa.</p>
+   <p><b>Art. 337 — Subtração ou inutilização de livro ou documento:</b> subtrair ou inutilizar, total ou parcialmente, livro oficial, processo ou documento confiado à custódia de funcionário em razão do cargo, ou de particular em serviço público. Pena: reclusão de 2 a 5 anos, se não houver crime mais grave.</p>
+   <p><b>Art. 337-A — Sonegação de contribuição previdenciária:</b> suprimir/reduzir contribuição social previdenciária e acessórios por omissões ou fraudes descritas no tipo. Pena: reclusão de 2 a 5 anos e multa. O artigo prevê hipóteses de extinção da punibilidade e perdão judicial/ aplicação somente de multa em situações específicas.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO II-A — Crimes contra a Administração Pública estrangeira (arts. 337-B a 337-D)</h3>
+   <p><b>Art. 337-B — Corrupção ativa em transação comercial internacional:</b> prometer, oferecer ou dar, direta ou indiretamente, vantagem indevida a funcionário público estrangeiro para determiná-lo a praticar, omitir ou retardar ato de ofício relacionado à transação comercial internacional. Pena: reclusão de 1 a 8 anos e multa, além do aumento previsto se o funcionário retarda/omite/pratica ato infringindo dever.</p>
+   <p><b>Art. 337-C — Tráfico de influência em transação comercial internacional:</b> solicitar, exigir, cobrar ou obter vantagem/promessa a pretexto de influir em ato de funcionário público estrangeiro no exercício das funções. Pena: reclusão de 2 a 5 anos e multa; aumento de metade se o agente alega/insinua que a vantagem também se destina ao funcionário.</p>
+   <p><b>Art. 337-D — Funcionário público estrangeiro:</b> definição para os efeitos penais do capítulo; inclui quem exerce cargo, emprego ou função pública em entidades estatais estrangeiras e, nas condições legais, em empresas controladas pelo poder público estrangeiro ou organizações públicas internacionais.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO II-B — Crimes em licitações e contratos administrativos (arts. 337-E a 337-P)</h3>
+   <p><b>Art. 337-E — Contratação direta ilegal:</b> admitir, possibilitar ou dar causa à contratação direta fora das hipóteses legais. Pena: reclusão de 4 a 8 anos e multa.</p>
+   <p><b>Art. 337-F — Frustração do caráter competitivo:</b> frustrar/fraudar a competição da licitação com intenção de obter vantagem decorrente da adjudicação. Pena: reclusão de 4 a 8 anos e multa.</p>
+   <p><b>Art. 337-G — Patrocínio de contratação indevida:</b> patrocinar interesse privado perante a Administração, dando causa a licitação/contrato cuja invalidação venha a ser decretada pelo Judiciário. Pena: reclusão de 6 meses a 3 anos e multa.</p>
+   <p><b>Art. 337-H — Modificação ou pagamento irregular em contrato administrativo:</b> admitir/possibilitar/promover modificação ou vantagem, inclusive pagamento, em favor do contratado, durante a execução sem autorização legal ou contratual. Pena: reclusão de 4 a 8 anos e multa.</p>
+   <p><b>Art. 337-I — Perturbação de processo licitatório:</b> impedir, perturbar ou fraudar a realização de qualquer ato de processo licitatório. Pena: detenção de 6 meses a 3 anos e multa.</p>
+   <p><b>Art. 337-J — Violação de sigilo em licitação:</b> devassar o sigilo de proposta apresentada em processo licitatório ou proporcionar a terceiro o ensejo de devassá-lo. Pena: detenção de 2 a 3 anos e multa.</p>
+   <p><b>Art. 337-K — Afastamento de licitante:</b> afastar ou tentar afastar licitante por violência, grave ameaça, fraude ou oferecimento de vantagem. Pena: reclusão de 3 a 5 anos e multa, além da pena correspondente à violência; incorre na mesma pena quem se abstém ou desiste de licitar em razão da vantagem oferecida.</p>
+   <p><b>Art. 337-L — Fraude em licitação ou contrato:</b> fraudar licitação/contrato por meios descritos no artigo, como entrega de mercadoria/serviço em qualidade ou quantidade diversa, substituição de produto, alteração da substância ou meio fraudulento que torne injustamente mais onerosa a proposta/execução. Pena: reclusão de 4 a 8 anos e multa.</p>
+   <p><b>Art. 337-M — Contratação de empresa ou profissional inidôneo:</b> admitir à licitação empresa/profissional declarado inidôneo; ou celebrar contrato com quem está nessa condição. Penas: reclusão de 1 a 3 anos e multa; na hipótese do § 1º, reclusão de 3 a 6 anos e multa.</p>
+   <p><b>Art. 337-N — Impedimento indevido:</b> obstar, impedir ou dificultar injustamente a inscrição de interessado em registro cadastral ou promover indevidamente alteração/suspensão/cancelamento. Pena: reclusão de 6 meses a 2 anos e multa.</p>
+   <p><b>Art. 337-O — Omissão grave de dado ou informação por projetista:</b> omitir, modificar ou entregar à Administração levantamento cadastral ou condição de contorno em relevante dissonância com a realidade, em contratação para elaboração de projeto. Pena: reclusão de 6 meses a 3 anos e multa; se praticado com o fim de obter benefício, aplica-se a forma qualificada do § 1º, conforme o texto legal.</p>
+   <p><b>Art. 337-P — Multa:</b> estabelece regra de cálculo da multa para os crimes do capítulo, observando os parâmetros legais e a possibilidade de fixação em valor proporcional ao contrato licitado/celebrado, nos termos do dispositivo.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO III — Crimes contra a Administração da Justiça (arts. 338 a 359)</h3>
+   <p><b>Art. 338 — Reingresso de estrangeiro expulso:</b> reingressar no território nacional o estrangeiro expulso. Pena: reclusão de 1 a 4 anos, sem prejuízo de nova expulsão após o cumprimento da pena.</p>
+   <p><b>Art. 339 — Denunciação caluniosa:</b> dar causa à instauração de inquérito/procedimento/processo contra alguém, imputando-lhe crime, infração ético-disciplinar ou ato ímprobo de que sabe ser inocente, nas condições do tipo. Pena: reclusão de 2 a 8 anos e multa. A pena aumenta de 1/6 se usa anonimato ou nome suposto; pode ser diminuída pela metade se a imputação é de contravenção.</p>
+   <p><b>Art. 340 — Comunicação falsa de crime ou contravenção:</b> provocar ação de autoridade comunicando ocorrência que sabe não ter acontecido. Pena: detenção de 1 a 6 meses ou multa.</p>
+   <p><b>Art. 341 — Autoacusação falsa:</b> acusar-se, perante autoridade, de crime inexistente ou praticado por outra pessoa. Pena: detenção de 3 meses a 2 anos ou multa.</p>
+   <p><b>Art. 342 — Falso testemunho ou falsa perícia:</b> fazer afirmação falsa, negar ou calar a verdade como testemunha, perito, contador, tradutor ou intérprete em processo judicial/administrativo, inquérito policial ou juízo arbitral. Pena: reclusão de 2 a 4 anos e multa. Aumento de 1/6 a 1/3 em hipóteses legais, como suborno ou finalidade de produzir efeito em processo penal/cível indicado no artigo. Retratação antes da sentença no processo em que ocorreu o ilícito extingue a punibilidade.</p>
+   <p><b>Art. 343 — Corrupção ativa de testemunha/perito:</b> dar, oferecer ou prometer dinheiro/vantagem para que testemunha, perito, contador, tradutor ou intérprete faça afirmação falsa, negue ou cale a verdade. Pena: reclusão de 3 a 4 anos e multa, com aumento legal em hipóteses específicas.</p>
+   <p><b>Art. 344 — Coação no curso do processo:</b> usar violência ou grave ameaça contra autoridade, parte ou pessoa chamada a intervir em processo judicial, policial ou administrativo, ou em juízo arbitral, para favorecer interesse próprio/alheio. Pena: reclusão de 1 a 4 anos e multa, além da pena correspondente à violência.</p>
+   <p><b>Art. 345 — Exercício arbitrário das próprias razões:</b> fazer justiça pelas próprias mãos para satisfazer pretensão, mesmo legítima, salvo quando a lei permite. Pena: detenção de 15 dias a 1 mês ou multa, além da pena correspondente à violência. Se não há violência, somente se procede mediante queixa.</p>
+   <p><b>Art. 346 — Tirar, suprimir, destruir ou danificar coisa própria em poder de terceiro por determinação judicial ou convenção:</b> detenção de 6 meses a 2 anos e multa.</p>
+   <p><b>Art. 347 — Fraude processual:</b> inovar artificiosamente, na pendência de processo civil ou administrativo, o estado de lugar, coisa ou pessoa, com fim de induzir juiz/perito a erro. Pena: detenção de 3 meses a 2 anos e multa. Se a inovação se destina a produzir efeito em processo penal, ainda que não iniciado, aplica-se o dobro.</p>
+   <p><b>Art. 348 — Favorecimento pessoal:</b> auxiliar autor de crime a subtrair-se à ação da autoridade. Pena: detenção de 1 a 6 meses e multa; se o crime não é punido com reclusão, detenção de 15 dias a 3 meses e multa. Não se pune quem é ascendente, descendente, cônjuge ou irmão do criminoso, nos termos legais.</p>
+   <p><b>Art. 349 — Favorecimento real:</b> prestar auxílio para tornar seguro o proveito do crime, fora dos casos de coautoria/participação. Pena: detenção de 1 a 6 meses e multa.</p>
+   <p><b>Art. 349-A — Ingresso de aparelho telefônico em estabelecimento prisional:</b> ingressar, promover, intermediar, auxiliar ou facilitar entrada de aparelho de comunicação móvel, rádio ou similar, sem autorização legal, em estabelecimento prisional. Pena: detenção de 3 meses a 1 ano.</p>
+   <p><b>Art. 350:</b> exercício arbitrário ou abuso de poder — revogado.</p>
+   <p><b>Art. 351 — Fuga de pessoa presa ou submetida a medida de segurança:</b> promover ou facilitar fuga de pessoa legalmente presa ou submetida a medida de segurança detentiva. Pena: detenção de 6 meses a 2 anos. Se há violência, reclusão de 2 a 6 anos; se praticado por pessoa sob cuja custódia/guarda está o preso, reclusão de 1 a 4 anos; se há concurso de pessoas, aplicam-se as regras do artigo.</p>
+   <p><b>Art. 352 — Evasão mediante violência contra pessoa:</b> evadir-se ou tentar evadir-se o preso/submetido a medida de segurança usando violência contra pessoa. Pena: detenção de 3 meses a 1 ano, além da pena correspondente à violência.</p>
+   <p><b>Art. 353 — Arrebatamento de preso:</b> arrebatar preso para maltratá-lo do poder de quem o tenha sob custódia ou guarda. Pena: reclusão de 1 a 4 anos, além da pena correspondente à violência.</p>
+   <p><b>Art. 354 — Motim de presos:</b> amotinarem-se presos, perturbando a ordem ou disciplina da prisão. Pena: detenção de 6 meses a 2 anos, além da pena correspondente à violência.</p>
+   <p><b>Art. 355 — Patrocínio infiel:</b> trair, como advogado ou procurador, o dever profissional, prejudicando interesse cujo patrocínio lhe foi confiado. Pena: detenção de 6 meses a 3 anos e multa. O parágrafo único trata do patrocínio simultâneo ou tergiversação.</p>
+   <p><b>Art. 356 — Sonegação de papel ou objeto de valor probatório:</b> inutilizar, total/parcialmente, ou deixar de restituir autos/documento de que tem posse em razão do cargo/profissão ou que recebeu para exame. Pena: detenção de 6 meses a 3 anos e multa.</p>
+   <p><b>Art. 357 — Exploração de prestígio:</b> solicitar ou receber dinheiro/utilidade a pretexto de influir em juiz, jurado, Ministério Público, funcionário da Justiça, perito, tradutor, intérprete ou testemunha. Pena: reclusão de 1 a 5 anos e multa; aumento de 1/3 se o agente alega/insinua que parte do dinheiro também se destina a alguma dessas pessoas.</p>
+   <p><b>Art. 358 — Violência ou fraude em arrematação judicial:</b> impedir, perturbar ou fraudar arrematação judicial; afastar ou tentar afastar concorrente/adquirente por violência, grave ameaça, fraude ou oferecimento de vantagem. Pena: detenção de 2 meses a 1 ano ou multa, além da pena correspondente à violência.</p>
+   <p><b>Art. 359 — Desobediência a decisão judicial sobre perda ou suspensão de direito:</b> exercer função, atividade, direito, autoridade ou múnus de que foi suspenso ou privado por decisão judicial. Pena: detenção de 3 meses a 2 anos ou multa.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO IV — Crimes contra as finanças públicas (arts. 359-A a 359-H)</h3>
+   <p><b>Art. 359-A — Contratação de operação de crédito:</b> ordenar, autorizar ou realizar operação de crédito sem prévia autorização legislativa ou em desacordo com limites/condições legais. Pena: reclusão de 1 a 2 anos.</p>
+   <p><b>Art. 359-B — Inscrição de despesas não empenhadas em restos a pagar:</b> ordenar/autorizar inscrição de despesa não empenhada previamente ou acima do limite legal. Pena: detenção de 6 meses a 2 anos.</p>
+   <p><b>Art. 359-C — Assunção de obrigação no último ano do mandato ou legislatura:</b> ordenar/autorizar obrigação nos dois últimos quadrimestres do último ano, cuja despesa não possa ser paga no mesmo exercício ou tenha parcelas a pagar no seguinte sem suficiente disponibilidade de caixa. Pena: reclusão de 1 a 4 anos.</p>
+   <p><b>Art. 359-D — Ordenação de despesa não autorizada:</b> ordenar despesa não autorizada por lei. Pena: reclusão de 1 a 4 anos.</p>
+   <p><b>Art. 359-E — Prestação de garantia graciosa:</b> prestar garantia em operação de crédito sem contragarantia em valor igual ou superior ou sem contragarantia de entidade controlada. Pena: detenção de 3 meses a 1 ano.</p>
+   <p><b>Art. 359-F — Não cancelamento de restos a pagar:</b> deixar de ordenar, autorizar ou promover o cancelamento de restos a pagar inscrito em valor superior ao permitido em lei. Pena: detenção de 6 meses a 2 anos.</p>
+   <p><b>Art. 359-G — Aumento de despesa total com pessoal no último ano do mandato ou legislatura:</b> ordenar, autorizar ou executar ato que acarrete aumento de despesa total com pessoal nos 180 dias anteriores ao final do mandato/legislatura. Pena: reclusão de 1 a 4 anos.</p>
+   <p><b>Art. 359-H — Oferta pública ou colocação de títulos no mercado:</b> ordenar, autorizar ou promover oferta pública/colocação no mercado financeiro de títulos da dívida pública sem criação por lei ou sem registro em sistema centralizado de liquidação e custódia. Pena: reclusão de 1 a 4 anos.</p>
+  </div>
+
+  <div class="rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-2">
+   <h3 class="font-bold text-yellow-400">Pegadinhas clássicas de prova</h3>
+   <ul class="list-disc pl-5 space-y-1">
+    <li><b>Peculato:</b> exige posse do bem em razão do cargo na modalidade própria; no peculato-furto, o agente não tem a posse, mas usa a facilidade funcional.</li>
+    <li><b>Concussão x corrupção passiva:</b> concussão = exigir; corrupção passiva = solicitar, receber ou aceitar promessa.</li>
+    <li><b>Corrupção ativa x passiva:</b> ativa é praticada pelo particular que oferece/promete; passiva pelo funcionário que solicita/recebe/aceita promessa. Podem existir de forma independente.</li>
+    <li><b>Prevaricação:</b> exige finalidade de satisfazer interesse ou sentimento pessoal; mero atraso administrativo não basta automaticamente.</li>
+    <li><b>Resistência x desobediência:</b> resistência exige violência ou ameaça contra funcionário/auxiliar para impedir ato legal; desobediência é descumprir ordem legal.</li>
+    <li><b>Denunciação caluniosa x comunicação falsa:</b> na primeira, imputa-se fato a pessoa que se sabe inocente e provoca procedimento; na segunda, comunica-se crime/contravenção que se sabe não ter ocorrido.</li>
+    <li><b>Favorecimento pessoal x real:</b> pessoal ajuda o autor a escapar da autoridade; real ajuda a tornar seguro o proveito do crime.</li>
+    <li><b>Contrabando x descaminho:</b> contrabando envolve mercadoria proibida; descaminho é iludir tributo devido na entrada/saída/consumo.</li>
+    <li><b>Art. 327:</b> conceito penal de funcionário público é mais amplo que o conceito de servidor estatutário.</li>
+    <li><b>Licitações:</b> memorize o núcleo de cada tipo dos arts. 337-E a 337-P; a Lei 14.133/2021 inseriu esse capítulo no Código Penal.</li>
+   </ul>
+  </div>
+  <p class="text-xs text-slate-400">Observação: o recorte pedido vai do art. 312 ao art. 359, incluindo os dispositivos com letras inseridos nesse intervalo (como 313-A, 337-A e 359-A a 359-H). Os artigos 322, 335 e 350 estão revogados. Confira sempre a redação consolidada vigente e o edital da sua prova.</p>
+ </div>
+
+ <div id="admTable" class="hidden space-y-3">
+  <h3 class="text-lg font-bold text-yellow-400">Quadro-resumo — identificação rápida</h3>
+  <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="text-left text-yellow-400 border-b border-yellow-900"><th class="p-2">Crime</th><th class="p-2">Art.</th><th class="p-2">Verbo/ideia-chave</th><th class="p-2">Pena-base</th></tr></thead><tbody>
+   <tr class="border-b border-slate-800"><td class="p-2">Peculato</td><td class="p-2">312</td><td class="p-2">Apropriar/desviar bem em razão do cargo</td><td class="p-2">2–12 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Peculato mediante erro</td><td class="p-2">313</td><td class="p-2">Apropriar-se do que recebeu por erro</td><td class="p-2">1–4 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Inserção de dados falsos</td><td class="p-2">313-A</td><td class="p-2">Inserir/alterar/excluir dados</td><td class="p-2">2–12 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Concussão</td><td class="p-2">316</td><td class="p-2">Exigir vantagem indevida</td><td class="p-2">2–12 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Corrupção passiva</td><td class="p-2">317</td><td class="p-2">Solicitar/receber/aceitar promessa</td><td class="p-2">2–12 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Prevaricação</td><td class="p-2">319</td><td class="p-2">Retardar/omitir/praticar por interesse pessoal</td><td class="p-2">3 meses–1 ano + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Corrupção ativa</td><td class="p-2">333</td><td class="p-2">Oferecer/prometer vantagem</td><td class="p-2">2–12 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Descaminho</td><td class="p-2">334</td><td class="p-2">Iludir tributo</td><td class="p-2">1–4 anos</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Contrabando</td><td class="p-2">334-A</td><td class="p-2">Importar/exportar mercadoria proibida</td><td class="p-2">2–5 anos</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Denunciação caluniosa</td><td class="p-2">339</td><td class="p-2">Provocar procedimento contra inocente</td><td class="p-2">2–8 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Falso testemunho</td><td class="p-2">342</td><td class="p-2">Mentir/calar verdade como testemunha/perito etc.</td><td class="p-2">2–4 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Fraude processual</td><td class="p-2">347</td><td class="p-2">Inovar artificiosamente estado de lugar/coisa/pessoa</td><td class="p-2">3 meses–2 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Contratação direta ilegal</td><td class="p-2">337-E</td><td class="p-2">Contratação fora das hipóteses legais</td><td class="p-2">4–8 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Crimes contra finanças públicas</td><td class="p-2">359-A–H</td><td class="p-2">Operação de crédito, despesa, restos a pagar, pessoal etc.</td><td class="p-2">Conforme o artigo</td></tr>
+  </tbody></table></div>
+  <p class="text-xs text-slate-400">Penas resumidas para memorização; consulte a teoria para qualificadoras, aumentos, hipóteses especiais e regras de aplicação.</p>
+ </div>
+
+ <div id="admQuiz" class="hidden space-y-4">
+  <h3 class="text-lg font-bold text-yellow-400">🎯 Simulado — 10 questões</h3>
+  <p class="text-xs text-slate-400">Marque uma alternativa em cada questão e clique em corrigir. O gabarito comentado aparece ao final.</p>
+  <div id="admQuestions" class="space-y-5"></div>
+  <div class="flex gap-3 flex-wrap"><button type="button" onclick="admGrade()" class="px-5 py-3 bg-blue-600 rounded-md font-bold">Corrigir respostas</button><button type="button" onclick="admReset()" class="px-5 py-3 bg-slate-800 rounded-md">Limpar respostas</button></div>
+  <div id="admResult" class="hidden rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-3"></div>
+ </div>
+</div>
+
+
+<!-- ===== NOVO: Crimes contra o Patrimônio (arts. 155 a 183) ===== -->
+<div id="patrimonio" class="hidden p-6 sm:p-8 space-y-5">
+ <div class="space-y-2">
+  <div class="text-xs font-semibold uppercase tracking-widest text-blue-400">📚 Direito Penal · Teoria + revisão + simulado</div>
+  <h2 class="text-2xl font-bold">💰 Crimes contra o Patrimônio</h2>
+  <p class="text-sm text-slate-300">Código Penal, arts. 155 a 183, incluindo dispositivos com letras e atualizações legislativas. Estudo voltado a concursos policiais.</p>
+  <div class="rounded-lg border border-yellow-900/50 bg-slate-950 p-4 text-sm"><b class="text-yellow-400">X da questão:</b> diferencie subtrair (furto/roubo), obter vantagem por fraude (estelionato), exigir vantagem com violência ou grave ameaça (extorsão) e receber coisa produto de crime (receptação).</div>
+  <p class="text-xs text-slate-400">Atenção: as penas de furto, roubo, estelionato e receptação foram alteradas em 2026. Este material considera a redação consolidada consultada em fonte oficial.</p>
+ </div>
+ <div class="flex flex-wrap gap-2">
+  <button type="button" onclick="patShow('patTheory')" class="px-4 py-2 bg-blue-600 rounded-md font-bold">📖 Teoria completa</button>
+  <button type="button" onclick="patShow('patTable')" class="px-4 py-2 bg-slate-800 rounded-md">🧠 Quadro-resumo</button>
+  <button type="button" onclick="patShow('patQuiz')" class="px-4 py-2 bg-slate-800 rounded-md">🎯 10 questões</button>
+ </div>
+ <div id="patTheory" class="space-y-5 text-sm text-slate-300">
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO I — Furto (arts. 155 e 156)</h3>
+   <p><b>Art. 155 — Furto:</b> subtrair, para si ou para outrem, coisa alheia móvel. Pena atual: reclusão de 1 a 6 anos e multa. O núcleo é <b>subtrair</b>, sem violência ou grave ameaça à pessoa.</p>
+   <p><b>Repouso noturno (§ 1º):</b> aumento de metade, conforme redação atual. <b>Furto privilegiado (§ 2º):</b> primário + pequeno valor da coisa; o juiz pode substituir reclusão por detenção, reduzir de 1/3 a 2/3 ou aplicar somente multa. Pequeno valor não se confunde com insignificância.</p>
+   <p><b>Energia (§ 3º):</b> equipara-se à coisa móvel a energia elétrica ou qualquer outra com valor econômico.</p>
+   <p><b>Furto qualificado (§ 4º):</b> reclusão de 2 a 8 anos e multa quando cometido com destruição/rompimento de obstáculo; abuso de confiança, fraude, escalada ou destreza; chave falsa; concurso de 2 ou mais pessoas; ou contra bens que comprometam o funcionamento de órgãos públicos ou estabelecimentos que prestem serviços essenciais.</p>
+   <p><b>Outras formas qualificadas:</b> emprego de explosivo ou artefato análogo que cause perigo comum (§ 4º-A: 4 a 10 anos); fraude por dispositivo eletrônico/informático (§ 4º-B: 4 a 10 anos, observadas as hipóteses legais); e outras hipóteses específicas dos §§ seguintes, inclusive subtração de animais de produção e bens de infraestrutura, conforme texto vigente.</p>
+   <p><b>Art. 156 — Furto de coisa comum:</b> condômino, co-herdeiro ou sócio subtrai coisa comum de quem legitimamente a detém. Pena: detenção de 6 meses a 2 anos ou multa. A ação penal depende de representação. Não é punível a subtração de coisa comum fungível cujo valor não exceda a quota do agente.</p>
+   <p><b>Exemplo:</b> um coproprietário retira bem comum que estava legitimamente sob a posse exclusiva do outro coproprietário: pode configurar furto de coisa comum, observadas as condições do art. 156.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO II — Roubo e extorsão (arts. 157 a 160)</h3>
+   <p><b>Art. 157 — Roubo:</b> subtrair coisa móvel alheia mediante violência, grave ameaça ou redução da vítima à impossibilidade de resistência. Pena-base atual: reclusão de 6 a 10 anos e multa. No roubo impróprio (§ 1º), a violência/grave ameaça é empregada logo depois da subtração para assegurar impunidade ou detenção da coisa.</p>
+   <p><b>Majorantes:</b> o artigo prevê aumentos em situações como concurso de pessoas, emprego de arma, transporte de valores, restrição da liberdade da vítima e subtração de determinados bens/serviços essenciais. O emprego de arma de fogo e as hipóteses com resultado lesão grave ou morte possuem tratamento mais severo. Confira a redação vigente do § 2º e seguintes para cada fração e hipótese.</p>
+   <p><b>Latrocínio (§ 3º):</b> roubo com resultado morte. Pena atual prevista no tipo: reclusão de 20 a 30 anos e multa, conforme a redação vigente. É crime contra o patrimônio, embora haja resultado morte. Súmula 610 do STF: há latrocínio quando o homicídio se consuma, ainda que não se realize a subtração dos bens.</p>
+   <p><b>Art. 158 — Extorsão:</b> constranger alguém, mediante violência ou grave ameaça, com intuito de obter para si ou para outrem indevida vantagem econômica, a fazer, tolerar que se faça ou deixar de fazer alguma coisa. Pena: reclusão de 4 a 10 anos e multa. A vantagem deve ser econômica e indevida.</p>
+   <p><b>Extorsão qualificada:</b> se praticada por 2 ou mais pessoas ou com emprego de arma, aplica-se a forma legal mais grave; se resulta lesão corporal grave ou morte, há qualificadoras específicas. <b>Extorsão mediante sequestro (§§ do art. 159):</b> sequestrar pessoa com fim de obter vantagem como condição/preço do resgate. Pena-base: reclusão de 8 a 15 anos; há qualificadoras conforme duração, idade da vítima, atuação em grupo e resultados lesão grave ou morte. Se resulta morte, a pena é especialmente elevada.</p>
+   <p><b>Art. 160 — Extorsão indireta:</b> exigir ou receber, como garantia de dívida, abusando da situação de alguém, documento que pode dar causa a procedimento criminal contra a vítima ou terceiro. Pena: reclusão de 1 a 3 anos e multa.</p>
+   <p><b>Roubo x extorsão:</b> no roubo, o agente subtrai; na extorsão, a colaboração/conduta da vítima é constrangida e integra a obtenção da vantagem. Exemplo: tomar o celular mediante ameaça = roubo; obrigar a vítima a fazer transferência bancária sob ameaça = extorsão.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO III — Usurpação (arts. 161 e 162)</h3>
+   <p><b>Art. 161 — Alteração de limites:</b> suprimir ou deslocar marco/limite para apropriar-se, no todo ou em parte, de imóvel alheio. Pena: detenção de 1 a 6 meses e multa. Há formas equiparadas: usurpação de águas e esbulho possessório, com violência ou grave ameaça ou mediante concurso de mais de duas pessoas, conforme o caso. Se há violência, também se aplica a pena correspondente.</p>
+   <p><b>Art. 162 — Supressão ou alteração de marca em animais:</b> suprimir ou alterar, indevidamente, marca/sinal indicativo de propriedade em gado ou rebanho alheio. Pena: detenção de 6 meses a 3 anos e multa.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO IV — Dano (arts. 163 a 167)</h3>
+   <p><b>Art. 163 — Dano:</b> destruir, inutilizar ou deteriorar coisa alheia. Pena: detenção de 1 a 6 meses ou multa. <b>Dano qualificado:</b> violência/ grave ameaça; substância inflamável ou explosiva (se o fato não constitui crime mais grave); patrimônio público ou de concessionária nas condições legais; ou motivo egoístico/prejuízo considerável para a vítima. Pena: detenção de 6 meses a 3 anos e multa, além da pena da violência.</p>
+   <p><b>Art. 164 — Introdução ou abandono de animais em propriedade alheia:</b> introduzir ou deixar animais em propriedade alheia, sem consentimento de quem de direito, desde que resulte prejuízo. Pena: detenção de 15 dias a 6 meses ou multa.</p>
+   <p><b>Art. 165 — Dano em coisa de valor artístico, arqueológico ou histórico:</b> dispositivo revogado.</p>
+   <p><b>Art. 166 — Alteração de local especialmente protegido:</b> alterar, sem licença da autoridade competente, o aspecto de local especialmente protegido por lei. Pena: detenção de 1 mês a 1 ano ou multa.</p>
+   <p><b>Art. 167 — Ação penal:</b> nos casos do art. 163, caput, e do inciso IV do parágrafo único, e do art. 164, procede-se mediante queixa, nos termos do artigo. Nas demais hipóteses, observar a regra legal correspondente.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO V — Apropriação indébita (arts. 168 a 170)</h3>
+   <p><b>Art. 168 — Apropriação indébita:</b> apropriar-se de coisa alheia móvel de que tem posse ou detenção. Pena: reclusão de 1 a 4 anos e multa. Diferentemente do furto, o agente recebe a posse licitamente e depois passa a agir como dono.</p>
+   <p><b>Aumento de 1/3 (§ 1º):</b> quando a coisa foi recebida em depósito necessário; na qualidade de tutor, curador, síndico, liquidatário, inventariante, testamenteiro ou depositário judicial; ou em razão de ofício, emprego ou profissão.</p>
+   <p><b>Art. 168-A — Apropriação indébita previdenciária:</b> deixar de repassar à Previdência Social contribuições recolhidas dos contribuintes, no prazo e forma legal. Pena: reclusão de 2 a 5 anos e multa, com hipóteses legais de extinção da punibilidade e redução/dispensa de pena.</p>
+   <p><b>Art. 169 — Apropriação de coisa havida por erro, caso fortuito ou força da natureza:</b> apropriar-se de coisa alheia que veio ao poder do agente por erro, caso fortuito ou força da natureza. Pena: detenção de 1 mês a 1 ano ou multa. O parágrafo único prevê apropriação de tesouro e de coisa achada, com requisitos próprios.</p>
+   <p><b>Art. 170 — Privilégio:</b> aplica-se à apropriação indébita o disposto no art. 155, § 2º, nos termos legais (agente primário e coisa de pequeno valor).</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO VI — Estelionato e outras fraudes (arts. 171 a 179)</h3>
+   <p><b>Art. 171 — Estelionato:</b> obter, para si ou para outrem, vantagem ilícita, em prejuízo alheio, induzindo ou mantendo alguém em erro mediante artifício, ardil ou qualquer outro meio fraudulento. Pena atual: reclusão de 1 a 6 anos e multa, conforme a alteração de 2026. Elementos: fraude, erro da vítima, vantagem ilícita e prejuízo alheio.</p>
+   <p><b>Estelionato privilegiado (§ 1º):</b> primário e pequeno valor do prejuízo; aplicam-se as alternativas do art. 155, § 2º. O artigo contém formas equiparadas, como disposição de coisa alheia como própria, alienação/oneração fraudulenta de coisa própria, defraudação de penhor, fraude na entrega de coisa e fraude para recebimento de indenização/valor de seguro.</p>
+   <p><b>Fraude eletrônica (§ 2º-A e seguintes):</b> fraude cometida com informações fornecidas pela vítima ou terceiro induzido a erro por redes sociais, contatos telefônicos, correio eletrônico fraudulento ou meio análogo, ou com utilização de dispositivo eletrônico/informático, conforme os elementos legais. As penas e majorantes específicas devem ser observadas conforme a modalidade e a redação vigente.</p>
+   <p><b>Ação penal:</b> em regra, pública condicionada à representação; há exceções legais, como vítima Administração Pública, criança/adolescente, pessoa com deficiência mental, maior de 70 anos ou incapaz, nos termos do § 5º.</p>
+   <p><b>Art. 171-A — Fraude com ativos virtuais, valores mobiliários ou ativos financeiros:</b> organizar, gerir, ofertar ou distribuir carteiras/serviços ou intermediar operações envolvendo ativos virtuais, valores mobiliários ou ativos financeiros com o fim de obter vantagem ilícita, induzindo ou mantendo alguém em erro, mediante fraude. Pena prevista no dispositivo: reclusão de 4 a 8 anos e multa.</p>
+   <p><b>Art. 172 — Duplicata simulada:</b> emitir fatura, duplicata ou nota de venda que não corresponda à mercadoria vendida, em quantidade ou qualidade, ou ao serviço prestado. Pena: detenção de 2 a 4 anos e multa.</p>
+   <p><b>Art. 173 — Abuso de incapazes:</b> abusar, em proveito próprio ou alheio, da necessidade, paixão ou inexperiência de menor, ou da alienação/ debilidade mental de alguém, induzindo-o à prática de ato suscetível de produzir efeito jurídico em prejuízo próprio ou de terceiro. Pena: reclusão de 2 a 6 anos e multa.</p>
+   <p><b>Art. 174 — Induzimento à especulação:</b> abusar da inexperiência ou simplicidade de alguém, induzindo-o à prática de jogo ou aposta, ou à especulação com títulos/mercadorias, sabendo ou devendo saber que a operação é ruinosa. Pena: reclusão de 1 a 3 anos e multa.</p>
+   <p><b>Art. 175 — Fraude no comércio:</b> enganar, no exercício de atividade comercial, o adquirente ou consumidor, vendendo mercadoria falsificada/deteriorada como verdadeira/perfeita, ou entregando uma coisa por outra. Pena: detenção de 6 meses a 2 anos ou multa. Há forma equiparada para prestação de serviço nas condições legais.</p>
+   <p><b>Art. 176 — Outras fraudes:</b> tomar refeição em restaurante, alojar-se em hotel ou utilizar transporte sem dispor de recursos para efetuar o pagamento. Pena: detenção de 15 dias a 2 meses ou multa. Somente se procede mediante representação, conforme parágrafo único.</p>
+   <p><b>Art. 177 — Fraudes e abusos na fundação ou administração de sociedade por ações:</b> abrange afirmações falsas/ocultações fraudulentas e outras condutas societárias previstas nos incisos. Pena principal: reclusão de 1 a 4 anos e multa, se o fato não constitui crime contra a economia popular. O § 2º prevê hipótese de negociação de voto, com pena própria.</p>
+   <p><b>Art. 178 — Emissão irregular de conhecimento de depósito ou warrant:</b> emitir esses títulos em desacordo com disposição legal. Pena: reclusão de 1 a 4 anos e multa.</p>
+   <p><b>Art. 179 — Fraude à execução:</b> fraudar execução, alienando, desviando, destruindo ou danificando bens, ou simulando dívidas. Pena: detenção de 6 meses a 2 anos ou multa. A ação penal depende de queixa.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO VII — Receptação (arts. 180 e 180-A)</h3>
+   <p><b>Art. 180 — Receptação simples:</b> adquirir, receber, transportar, conduzir ou ocultar, em proveito próprio/alheio, coisa que sabe ser produto de crime, ou influir para que terceiro de boa-fé a adquira/receba/oculte. Pena atual: reclusão de 2 a 6 anos e multa.</p>
+   <p><b>Receptação qualificada (§ 1º):</b> praticar condutas como adquirir, receber, transportar, ocultar, ter em depósito, desmontar, montar, remontar, vender ou expor à venda coisa que deve saber ser produto de crime, no exercício de atividade comercial ou industrial. Pena: reclusão de 3 a 8 anos e multa. Comércio irregular ou clandestino, inclusive em residência, equipara-se à atividade comercial (§ 2º).</p>
+   <p><b>Receptação culposa (§ 3º):</b> adquirir ou receber coisa que, por sua natureza, desproporção entre valor e preço ou condição de quem oferece, deve presumir-se obtida por meio criminoso. Pena: detenção de 1 mês a 1 ano, ou multa, ou ambas.</p>
+   <p><b>Independência (§ 4º):</b> a receptação é punível ainda que desconhecido ou isento de pena o autor do crime anterior. A lei prevê ainda aumentos/agravamentos específicos para bens públicos, fios/cabos/equipamentos essenciais e atuação de organizações criminosas, conforme os parágrafos vigentes.</p>
+   <p><b>Art. 180-A — Receptação de animal:</b> adquirir, receber, transportar, conduzir, ocultar, ter em depósito ou vender, para produção ou comercialização, semovente domesticável de produção, ainda que abatido/dividido, ou animal doméstico, que sabe ou deve saber ser produto de crime. Pena atual: reclusão de 3 a 8 anos e multa.</p>
+  </div>
+
+  <div class="border-l-4 border-yellow-500 pl-4 space-y-2">
+   <h3 class="text-lg font-bold text-yellow-400">CAPÍTULO VIII — Disposições gerais (arts. 181 a 183)</h3>
+   <p><b>Art. 181 — Escusas absolutórias:</b> é isento de pena quem pratica crime patrimonial do título em prejuízo do cônjuge, na constância da sociedade conjugal, ou de ascendente/descendente, seja o parentesco legítimo/ilegítimo, civil/natural.</p>
+   <p><b>Art. 182 — Escusa relativa:</b> depende de representação se o crime é cometido em prejuízo de cônjuge judicialmente separado, irmão, ou tio/sobrinho com quem o agente coabita.</p>
+   <p><b>Art. 183 — Exceções:</b> os arts. 181 e 182 não se aplicam se o crime é roubo ou extorsão, ou em geral quando há violência ou grave ameaça; ao estranho que participa do crime; ou quando praticado contra pessoa com idade igual ou superior a 60 anos.</p>
+   <p><b>Art. 183-A:</b> embora esteja logo após o recorte numérico pedido, é importante observar a regra especial: crimes do título cometidos contra instituições financeiras e prestadores de serviço de segurança privada podem ter as penas aumentadas de 1/3 até o dobro, nos termos da lei. O material principal mantém o foco nos arts. 155 a 183.</p>
+  </div>
+
+  <div class="rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-2">
+   <h3 class="font-bold text-yellow-400">Pegadinhas clássicas de concurso</h3>
+   <ul class="list-disc pl-5 space-y-1">
+    <li><b>Furto x roubo:</b> roubo exige violência, grave ameaça ou redução da resistência da vítima; furto não.</li>
+    <li><b>Roubo x extorsão:</b> no roubo, subtrai; na extorsão, constrange a vítima a fazer, tolerar ou deixar de fazer algo para obter vantagem econômica.</li>
+    <li><b>Furto x apropriação indébita:</b> no furto, a coisa é subtraída; na apropriação, a posse/detenção já era legítima e depois ocorre a inversão do ânimo.</li>
+    <li><b>Estelionato x furto mediante fraude:</b> no estelionato, a vítima é induzida/man tida em erro e entrega voluntariamente a coisa/realiza o ato; no furto mediante fraude, a fraude reduz a vigilância e permite a subtração pelo agente.</li>
+    <li><b>Receptação:</b> o crime anterior não precisa ter autor identificado ou condenado para que a receptação seja punível.</li>
+    <li><b>Latrocínio:</b> crime patrimonial; a consumação da morte basta para o latrocínio consumado, ainda que a subtração não se concretize (Súmula 610/STF).</li>
+    <li><b>Escusas dos arts. 181 e 182:</b> não protegem roubo/extorsão, violência/grave ameaça, terceiro estranho participante ou vítima idosa (60 anos ou mais).</li>
+    <li><b>Furto privilegiado:</b> exige primariedade e pequeno valor; não é sinônimo de princípio da insignificância.</li>
+   </ul>
+  </div>
+  <p class="text-xs text-slate-400">Material didático de revisão. Para provas, confira a literalidade dos dispositivos e as alterações mais recentes no Código Penal consolidado, especialmente os arts. 155, 157, 171 e 180, cujas penas foram modificadas em 2026.</p>
+ </div>
+
+ <div id="patTable" class="hidden space-y-3">
+  <h3 class="text-lg font-bold text-yellow-400">Quadro-resumo — identificação rápida</h3>
+  <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="text-left text-yellow-400 border-b border-yellow-900"><th class="p-2">Crime</th><th class="p-2">Art.</th><th class="p-2">Palavra-chave</th><th class="p-2">Pena-base/resumo</th></tr></thead><tbody>
+   <tr class="border-b border-slate-800"><td class="p-2">Furto</td><td class="p-2">155</td><td class="p-2">Subtrair sem violência</td><td class="p-2">1–6 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Furto de coisa comum</td><td class="p-2">156</td><td class="p-2">Subtração de coisa comum</td><td class="p-2">6 meses–2 anos ou multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Roubo</td><td class="p-2">157</td><td class="p-2">Subtrair com violência/ameaça</td><td class="p-2">6–10 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Extorsão</td><td class="p-2">158</td><td class="p-2">Constranger por vantagem econômica</td><td class="p-2">4–10 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Extorsão mediante sequestro</td><td class="p-2">159</td><td class="p-2">Sequestro por resgate</td><td class="p-2">8–15 anos</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Dano</td><td class="p-2">163</td><td class="p-2">Destruir/inutilizar/deteriorar</td><td class="p-2">1–6 meses ou multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Apropriação indébita</td><td class="p-2">168</td><td class="p-2">Posse legítima + inversão</td><td class="p-2">1–4 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Apropriação previdenciária</td><td class="p-2">168-A</td><td class="p-2">Não repassar contribuição</td><td class="p-2">2–5 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Estelionato</td><td class="p-2">171</td><td class="p-2">Fraude + erro + vantagem</td><td class="p-2">1–6 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Duplicata simulada</td><td class="p-2">172</td><td class="p-2">Documento comercial falso</td><td class="p-2">2–4 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Fraude à execução</td><td class="p-2">179</td><td class="p-2">Fraudar execução patrimonial</td><td class="p-2">6 meses–2 anos ou multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Receptação</td><td class="p-2">180</td><td class="p-2">Receber coisa produto de crime</td><td class="p-2">2–6 anos + multa</td></tr>
+   <tr class="border-b border-slate-800"><td class="p-2">Receptação de animal</td><td class="p-2">180-A</td><td class="p-2">Animal produto de crime</td><td class="p-2">3–8 anos + multa</td></tr>
+  </tbody></table></div>
+  <p class="text-xs text-slate-400">Quadro sintético; consulte a teoria para formas qualificadas, majorantes, privilégios, ação penal e exceções.</p>
+ </div>
+
+ <div id="patQuiz" class="hidden space-y-4">
+  <h3 class="text-lg font-bold text-yellow-400">🎯 Simulado — 10 questões</h3>
+  <p class="text-xs text-slate-400">Marque uma alternativa em cada questão e clique em corrigir. O gabarito comentado aparece ao final.</p>
+  <div id="patQuestions" class="space-y-5"></div>
+  <div class="flex gap-3 flex-wrap"><button type="button" onclick="patGrade()" class="px-5 py-3 bg-blue-600 rounded-md font-bold">Corrigir respostas</button><button type="button" onclick="patReset()" class="px-5 py-3 bg-slate-800 rounded-md">Limpar respostas</button></div>
+  <div id="patResult" class="hidden rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-3"></div>
+ </div>
+</div>
+
 </main>
 <footer class="text-center py-5 text-xs text-slate-500 border-t border-slate-900">Baseado na Lei Complementar da Polícia Civil de Minas Gerais (PCMG). Confira sempre o texto oficial atualizado.</footer>
 
@@ -196,7 +634,7 @@ const $=i=>document.getElementById(i);
 const TN={m:"Múltipla escolha",l:"Complete a lacuna",v:"Verdadeiro ou Falso"};
 let list=[],i=0,score=0,hits=0,combo=0,best=0,done=true,errs=[],cur=null;
 const sh=a=>a.map(x=>[Math.random(),x]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
-function show(id){['menu','theory','quiz','result','tlist','prazos','resp','inc','port','cp'].forEach(s=>$(s).classList.toggle('hidden',s!==id));hl(id)}
+function show(id){['menu','theory','quiz','result','tlist','prazos','resp','inc','port','cp','sex','adm','patrimonio'].forEach(s=>$(s).classList.toggle('hidden',s!==id));hl(id)}
 function hl(id){const m={theory:'tlist',quiz:'menu',result:'menu'};const a=m[id]||id;document.querySelectorAll('#tabs button').forEach(b=>b.className='px-4 py-2 rounded '+(b.dataset.id===a?'bg-blue-600 font-bold uppercase':'bg-slate-900 text-slate-300'))}
 function toMenu(){show("menu");$("cq").textContent=0;$("tq").textContent=0;$("score").textContent=0;$("combo").textContent=0}
 function buildMenu(){
@@ -327,7 +765,7 @@ $('resp').innerHTML='<h2 class="text-2xl font-bold">👮 Responsabilidades</h2><
 $('inc').innerHTML='<h2 class="text-2xl font-bold">📊 Mais cobrados em concurso</h2><p class="text-xs text-slate-400">Estimativa baseada no padrão de cobrança de leis orgânicas (literalidade, números e competências). Não é estatística oficial de banca: confira sempre o edital.</p>'+IN.map((r,i)=>'<div class="space-y-1"><div class="flex justify-between text-sm"><b>'+(i+1)+'. '+r[0]+'</b><span class="text-yellow-400">'+'★'.repeat(r[1])+'</span></div><div class="h-2 bg-slate-800 rounded"><div class="h-2 bg-yellow-500 rounded" style="width:'+r[1]*20+'%"></div></div><div class="text-xs text-slate-400">'+r[2]+'</div></div>').join('');
 $('tlist').innerHTML='<h2 class="text-2xl font-bold">📚 Teoria da Lei</h2><p class="text-sm text-slate-300">Estude cada pasta antes das questões: os arts. 1º a 106 estão organizados em 9 temas.</p><div id="tl" class="grid sm:grid-cols-2 gap-3"></div>';
 P.forEach((n,k)=>{const b=document.createElement('button');b.className='p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-blue-500/60 text-left';b.innerHTML='<div class="font-semibold text-sm">📁 Pasta '+(k+1)+'</div><div class="text-xs text-slate-400 mt-1">'+n+'</div>';b.onclick=()=>openTheory(k);$('tl').appendChild(b)});
-[['tlist','📚 Teoria'],['menu','🎯 Questões'],['prazos','⏱️ Prazos'],['resp','👮 Responsabilidades'],['inc','📊 Mais cobrados'],['port','🇧🇷 Português'],['cp','⚖️ Cód. Penal']].forEach(([id,t])=>{const b=document.createElement('button');b.dataset.id=id;b.textContent=t;b.onclick=()=>id==='menu'?toMenu():show(id);$('tabs').appendChild(b)});
+[['tlist','📚 Teoria'],['menu','🎯 Questões'],['prazos','⏱️ Prazos'],['resp','👮 Responsabilidades'],['inc','📊 Mais cobrados'],['port','🇧🇷 Português'],['cp','⚖️ Cód. Penal'],['sex','🚨 Dignidade Sexual'],['adm','🏛️ Administração Pública'],['patrimonio','💰 Crimes contra o Patrimônio']].forEach(([id,t])=>{const b=document.createElement('button');b.dataset.id=id;b.textContent=t;b.onclick=()=>id==='menu'?toMenu():show(id);$('tabs').appendChild(b)});
 buildMenu();show('tlist');
 </script>
 
@@ -500,5 +938,149 @@ II - se a gravidez resulta de estupro e o aborto é precedido de consentimento d
   box.appendChild(p)});
 })();
 </script>
+
+<script>
+function sexShow(id){
+ ['sexTheory','sexTable','sexQuiz'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));
+}
+const SEX_Q=[
+ ["Para a configuração do estupro do art. 213, o agente deve constranger a vítima mediante: ",["Fraude ou erro","Violência ou grave ameaça","Relação de superioridade funcional","Apenas ausência de consentimento"],1,"O art. 213 exige violência ou grave ameaça para constranger alguém à conjunção carnal ou a outro ato libidinoso."],
+ ["No crime de violação sexual mediante fraude (art. 215), o elemento característico é:",["Violência física","Ameaça de mal injusto","Fraude ou meio que dificulte a livre manifestação da vontade","Relação hierárquica no trabalho"],2,"O art. 215 se caracteriza pelo emprego de fraude ou meio equivalente que comprometa a livre manifestação da vontade."],
+ ["A importunação sexual (art. 215-A) consiste em:",["Praticar ato libidinoso contra alguém e sem sua anuência, para satisfação sexual, se não houver crime mais grave","Constranger mediante grave ameaça","Divulgar vídeo íntimo","Exigir vantagem sexual de subordinado"],0,"O tipo exige ato libidinoso sem anuência e tem aplicação subsidiária quando não houver crime mais grave."],
+ ["Para o assédio sexual do art. 216-A, é necessário que o agente:",["Seja cônjuge da vítima","Tenha praticado violência física","Prevaleça-se de superioridade hierárquica ou ascendência ligada a emprego, cargo ou função","Divulgue conteúdo íntimo"],2,"A relação de superioridade hierárquica ou ascendência funcional é elemento essencial do art. 216-A."],
+ ["O art. 216-B pune:",["Somente a divulgação pública de vídeo","Produzir ou registrar, sem autorização, cena íntima de nudez ou ato sexual/libidinoso, inclusive montagem prevista no parágrafo único","Apenas ameaçar divulgar conteúdo","Qualquer fotografia feita em local público"],1,"O núcleo é produzir, fotografar, filmar ou registrar cena íntima sem autorização; o parágrafo único também prevê montagem."],
+ ["Em relação ao estupro de vulnerável (art. 217-A), assinale a correta:",["O consentimento do menor de 14 anos afasta o crime","Experiência sexual anterior afasta a vulnerabilidade","A vulnerabilidade é absoluta e não pode ser relativizada","É indispensável violência física"],2,"O § 4º-A estabelece presunção absoluta de vulnerabilidade; o § 5º afasta relevância do consentimento e da experiência sexual anterior."],
+ ["O art. 218 pune quem:",["Induz menor de 14 anos a satisfazer a lascívia de outra pessoa","Pratica ato sexual na presença de menor de 14 anos","Registra cena íntima sem autorização","Compartilha vídeo íntimo"],0,"O verbo do art. 218 é induzir menor de 14 anos a satisfazer a lascívia de terceiro."],
+ ["No art. 218-A, a conduta típica envolve:",["Induzir menor a prostituição","Praticar ato libidinoso na presença de menor de 14 anos ou induzi-lo a presenciar, para satisfazer lascívia própria ou alheia","Ter conjunção carnal mediante fraude","Assediar subordinado"],1,"O menor presencia o ato ou é induzido a presenciá-lo; não precisa participar fisicamente."],
+ ["O art. 218-B trata principalmente de:",["Assédio sexual no trabalho","Exploração sexual de menor de 18 anos ou pessoa vulnerável, incluindo submeter, induzir, atrair ou facilitar","Registro não autorizado de intimidade","Estupro mediante violência"],1,"O art. 218-B alcança diversas formas de favorecimento da prostituição ou exploração sexual de menor de 18 anos ou vulnerável."],
+ ["Sobre o art. 218-C, é correto afirmar que:",["Somente quem grava o conteúdo pode responder","Compartilhar cena íntima sem consentimento pode configurar o crime, ainda que o agente não tenha produzido a gravação","A autorização para gravar sempre autoriza divulgar","O crime exige finalidade de lucro"],1,"O tipo inclui oferecer, transmitir, distribuir, publicar ou divulgar. Consentir com a gravação não significa consentir com a divulgação."]
+];
+function sexBuild(){
+ const root=document.getElementById('sexQuestions'); if(root.dataset.ready)return;
+ SEX_Q.forEach((q,i)=>{
+  const card=document.createElement('div');card.className='rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-3';
+  const title=document.createElement('p');title.className='font-semibold text-slate-100';title.textContent=(i+1)+'. '+q[0];card.appendChild(title);
+  q[1].forEach((opt,j)=>{
+   const lab=document.createElement('label');lab.className='flex gap-2 items-start text-sm cursor-pointer';
+   const radio=document.createElement('input');radio.type='radio';radio.name='sexq'+i;radio.value=j;radio.className='mt-1 accent-yellow-500';
+   const span=document.createElement('span');span.textContent=String.fromCharCode(65+j)+') '+opt;lab.append(radio,span);card.appendChild(lab);
+  });
+  root.appendChild(card);
+ });
+ root.dataset.ready='1';
+}
+function sexGrade(){
+ let hits=0,answered=0;let out='<h4 class="text-lg font-bold text-yellow-400">Resultado e gabarito comentado</h4>';
+ SEX_Q.forEach((q,i)=>{
+  const sel=document.querySelector('input[name="sexq'+i+'"]:checked');if(sel)answered++;
+  const ok=sel&&Number(sel.value)===q[2];if(ok)hits++;
+  out+='<div class="border-b border-slate-800 pb-2"><b class="'+(ok?'text-emerald-400':'text-rose-400')+'">Questão '+(i+1)+': '+(ok?'Correta':'Incorreta')+'</b><p class="text-sm">Gabarito: '+String.fromCharCode(65+q[2])+') '+q[1][q[2]]+'</p><p class="text-xs text-slate-400">'+q[3]+'</p></div>';
+ });
+ out='<p class="font-bold">Você acertou '+hits+' de 10 · Respondeu '+answered+' de 10.</p>'+out;
+ const r=document.getElementById('sexResult');r.innerHTML=out;r.classList.remove('hidden');
+}
+function sexReset(){
+ document.querySelectorAll('#sexQuestions input').forEach(x=>x.checked=false);
+ document.getElementById('sexResult').classList.add('hidden');
+}
+sexBuild();
+</script>
+
+
+<script>
+function admShow(id){
+ ['admTheory','admTable','admQuiz'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));
+}
+const ADM_Q=[
+ ["O funcionário público que se apropria de bem móvel de que tem posse em razão do cargo pratica, em regra:",["Concussão","Peculato","Prevaricação","Corrupção ativa"],1,"O art. 312 pune a apropriação ou desvio de bem móvel cuja posse decorre do cargo."],
+ ["A diferença central entre concussão e corrupção passiva é que, na concussão, o agente:",["Solicita vantagem","Recebe vantagem","Exige vantagem indevida","Oferece vantagem"],2,"Concussão (art. 316) tem como verbo nuclear exigir; corrupção passiva (art. 317) usa solicitar, receber ou aceitar promessa."],
+ ["O funcionário que retarda ato de ofício para satisfazer sentimento pessoal pratica:",["Prevaricação","Condescendência criminosa","Advocacia administrativa","Desobediência"],0,"A prevaricação exige retardar/omitir ou praticar ato contra a lei para satisfazer interesse ou sentimento pessoal."],
+ ["O particular que oferece ou promete vantagem indevida a funcionário público para que pratique ato de ofício pratica:",["Corrupção passiva","Tráfico de influência","Corrupção ativa","Concussão"],2,"A corrupção ativa está no art. 333 e é praticada por quem oferece ou promete vantagem."],
+ ["O agente que ilude o pagamento de tributo devido pela entrada, saída ou consumo de mercadoria pratica:",["Contrabando","Descaminho","Resistência","Usurpação de função pública"],1,"Descaminho (art. 334) é iludir tributo; contrabando (art. 334-A) envolve mercadoria proibida."],
+ ["Opor-se à execução de ato legal mediante violência ou ameaça contra funcionário competente ou quem o auxilia caracteriza:",["Desobediência","Desacato","Resistência","Tráfico de influência"],2,"A resistência (art. 329) exige violência ou ameaça para impedir a execução de ato legal."],
+ ["Dar causa à instauração de procedimento contra pessoa que sabe inocente, imputando-lhe crime, é:",["Comunicação falsa de crime","Denunciação caluniosa","Autoacusação falsa","Falso testemunho"],1,"A denunciação caluniosa (art. 339) envolve imputação a pessoa sabidamente inocente e instauração de procedimento."],
+ ["Ajudar o autor de crime a escapar da ação da autoridade configura:",["Favorecimento real","Favorecimento pessoal","Fraude processual","Coação no curso do processo"],1,"Favorecimento pessoal (art. 348) auxilia o autor a subtrair-se à ação da autoridade; o real torna seguro o proveito do crime."],
+ ["O crime de contratação direta fora das hipóteses previstas em lei está previsto no:",["Art. 337-E","Art. 337-F","Art. 337-L","Art. 337-P"],0,"O art. 337-E tipifica a contratação direta ilegal; o art. 337-F trata da frustração do caráter competitivo."],
+ ["Para fins penais, o conceito de funcionário público do art. 327:",["Abrange apenas servidor efetivo e remunerado","Exige vínculo estatutário","Pode abranger quem exerce função pública transitoriamente ou sem remuneração","Não alcança empregado de entidade paraestatal"],2,"O art. 327 adota conceito amplo: exercício de cargo, emprego ou função pública, ainda que transitório ou sem remuneração, além das equiparações legais."]
+];
+function admBuild(){
+ const root=document.getElementById('admQuestions'); if(root.dataset.ready)return;
+ ADM_Q.forEach((q,i)=>{
+  const card=document.createElement('div');card.className='rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-3';
+  const title=document.createElement('p');title.className='font-semibold text-slate-100';title.textContent=(i+1)+'. '+q[0];card.appendChild(title);
+  q[1].forEach((opt,j)=>{
+   const lab=document.createElement('label');lab.className='flex gap-2 items-start text-sm cursor-pointer';
+   const radio=document.createElement('input');radio.type='radio';radio.name='admq'+i;radio.value=j;radio.className='mt-1 accent-yellow-500';
+   const span=document.createElement('span');span.textContent=String.fromCharCode(65+j)+') '+opt;lab.append(radio,span);card.appendChild(lab);
+  });
+  root.appendChild(card);
+ });
+ root.dataset.ready='1';
+}
+function admGrade(){
+ let hits=0,answered=0;let out='<h4 class="text-lg font-bold text-yellow-400">Gabarito comentado</h4>';
+ ADM_Q.forEach((q,i)=>{
+  const sel=document.querySelector('input[name="admq'+i+'"]:checked');if(sel)answered++;
+  const ok=sel&&Number(sel.value)===q[2];if(ok)hits++;
+  out+='<div class="border-b border-slate-800 pb-2"><b class="'+(ok?'text-emerald-400':'text-rose-400')+'">Questão '+(i+1)+': '+(ok?'Correta':'Incorreta')+'</b><p class="text-sm">Gabarito: '+String.fromCharCode(65+q[2])+') '+q[1][q[2]]+'</p><p class="text-xs text-slate-400">'+q[3]+'</p></div>';
+ });
+ out='<p class="font-bold">Você acertou '+hits+' de 10 · Respondeu '+answered+' de 10.</p>'+out;
+ const r=document.getElementById('admResult');r.innerHTML=out;r.classList.remove('hidden');
+}
+function admReset(){
+ document.querySelectorAll('#admQuestions input').forEach(x=>x.checked=false);
+ document.getElementById('admResult').classList.add('hidden');
+}
+admBuild();
+</script>
+
+
+<script>
+function patShow(id){
+ ['patTheory','patTable','patQuiz'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));
+}
+const PAT_Q=[
+ ["Subtrair coisa alheia móvel sem violência ou grave ameaça caracteriza, em regra:",["Roubo","Furto","Extorsão","Apropriação indébita"],1,"O furto do art. 155 tem como núcleo subtrair coisa alheia móvel, sem violência ou grave ameaça à pessoa."],
+ ["No roubo, a subtração ocorre mediante:",["Fraude que induz a vítima em erro","Violência, grave ameaça ou redução da resistência","Apenas abuso de confiança","Posse legítima anterior"],1,"O art. 157 exige violência, grave ameaça ou redução da vítima à impossibilidade de resistência."],
+ ["O agente recebe legitimamente um celular emprestado e depois decide ficar com ele como se fosse seu. Em tese, pratica:",["Furto","Roubo","Apropriação indébita","Receptação"],2,"Na apropriação indébita (art. 168), a posse/detenção é legítima no início e depois ocorre a inversão do ânimo."],
+ ["Obter vantagem ilícita induzindo a vítima em erro por meio fraudulento caracteriza:",["Estelionato","Dano","Extorsão indireta","Furto de coisa comum"],0,"O estelionato (art. 171) exige fraude, erro da vítima, vantagem ilícita e prejuízo alheio."],
+ ["Adquirir ou receber coisa que o agente sabe ser produto de crime configura:",["Apropriação indébita","Receptação","Usurpação","Dano qualificado"],1,"A receptação está no art. 180; o autor do crime anterior pode ser desconhecido ou isento de pena."],
+ ["Constranger alguém, mediante grave ameaça, a realizar transferência bancária para obter vantagem econômica indevida caracteriza, em regra:",["Furto simples","Extorsão","Apropriação de coisa achada","Receptação culposa"],1,"Na extorsão, a vítima é constrangida a fazer, tolerar ou deixar de fazer algo para gerar vantagem econômica."],
+ ["O furto privilegiado exige, conjuntamente:",["Réu reincidente e coisa de valor elevado","Agente primário e coisa de pequeno valor","Violência e grave ameaça","Concurso de pessoas e emprego de arma"],1,"O art. 155, § 2º, exige primariedade e pequeno valor da coisa furtada."],
+ ["No estelionato, como regra geral, a ação penal é:",["Privada exclusiva","Pública incondicionada em todos os casos","Pública condicionada à representação, ressalvadas exceções legais","Dependente de autorização judicial prévia"],2,"O art. 171, § 5º, prevê representação como regra e enumera exceções."],
+ ["O latrocínio é classificado como crime contra:",["A administração pública","A fé pública","O patrimônio","A dignidade sexual"],2,"O latrocínio está no capítulo do roubo e extorsão, dentro do Título dos Crimes contra o Patrimônio."],
+ ["Pelos arts. 181 a 183, as escusas absolutórias/relativas não se aplicam, entre outras hipóteses, quando:",["O crime é furto simples entre irmãos","A vítima tem menos de 18 anos","O crime é roubo ou extorsão, ou há violência/grave ameaça","O agente é primário"],2,"O art. 183 exclui a aplicação dos arts. 181 e 182 nos casos de roubo/extorsão ou violência/grave ameaça, participação de estranho e vítima com 60 anos ou mais."]
+];
+function patBuild(){
+ const root=document.getElementById('patQuestions'); if(root.dataset.ready)return;
+ PAT_Q.forEach((q,i)=>{
+  const card=document.createElement('div');card.className='rounded-lg border border-slate-700 bg-slate-950 p-4 space-y-3';
+  const title=document.createElement('p');title.className='font-semibold text-slate-100';title.textContent=(i+1)+'. '+q[0];card.appendChild(title);
+  q[1].forEach((opt,j)=>{
+   const lab=document.createElement('label');lab.className='flex gap-2 items-start text-sm cursor-pointer';
+   const radio=document.createElement('input');radio.type='radio';radio.name='patq'+i;radio.value=j;radio.className='mt-1 accent-yellow-500';
+   const span=document.createElement('span');span.textContent=String.fromCharCode(65+j)+') '+opt;lab.append(radio,span);card.appendChild(lab);
+  });
+  root.appendChild(card);
+ });
+ root.dataset.ready='1';
+}
+function patGrade(){
+ let hits=0,answered=0;let out='<h4 class="text-lg font-bold text-yellow-400">Gabarito comentado</h4>';
+ PAT_Q.forEach((q,i)=>{
+  const sel=document.querySelector('input[name="patq'+i+'"]:checked');if(sel)answered++;
+  const ok=sel&&Number(sel.value)===q[2];if(ok)hits++;
+  out+='<div class="border-b border-slate-800 pb-2"><b class="'+(ok?'text-emerald-400':'text-rose-400')+'">Questão '+(i+1)+': '+(ok?'Correta':'Incorreta')+'</b><p class="text-sm">Gabarito: '+String.fromCharCode(65+q[2])+') '+q[1][q[2]]+'</p><p class="text-xs text-slate-400">'+q[3]+'</p></div>';
+ });
+ out='<p class="font-bold">Você acertou '+hits+' de 10 · Respondeu '+answered+' de 10.</p>'+out;
+ const r=document.getElementById('patResult');r.innerHTML=out;r.classList.remove('hidden');
+}
+function patReset(){
+ document.querySelectorAll('#patQuestions input').forEach(x=>x.checked=false);
+ document.getElementById('patResult').classList.add('hidden');
+}
+patBuild();
+</script>
+
 </body>
 </html>
